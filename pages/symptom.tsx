@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 
 // Page where user can see what herbs are good for a certain issue.
-function HerbsBySymptom() {
+function Symptom() {
     const hash: any = useRouter();
     let activeClassName: string;
 
@@ -42,7 +42,7 @@ function HerbsBySymptom() {
                     <div>
                         {herbsWithSymptom.map((i) => (
                                 <Link href={"/herb/" + i.id}>
-                                    <p>{i.names[Language.english]}</p>
+                                    <a><p>{i.names[Language.english]}</p></a>
                                 </Link>
                             )
                         )}
@@ -74,7 +74,7 @@ function HerbsBySymptom() {
     )
 }
 
-export default HerbsBySymptom;
+export default Symptom;
 
 
 

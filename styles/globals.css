@@ -188,6 +188,10 @@ a:hover {
   align-items: center;
 }
 
+.herb-name-box div {
+    max-width: 30%;
+}
+
 .symptom-box p, .workshop-box p, .article-box p {
   width: 40%
 }
