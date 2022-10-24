@@ -31,6 +31,7 @@ a:hover {
   color: var(--dark-green);
   border: var(--super-dark-green) solid 0.5px;
   transition: background-color 1s linear ;
+  margin: 2%;
 }
 
 .btn:hover, .button:hover {
@@ -226,6 +227,7 @@ a:hover {
 .contact-box p{
   width: 60%
 }
+
 
 /* other */
 

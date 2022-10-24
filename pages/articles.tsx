@@ -1,13 +1,34 @@
 import React, {useState} from 'react';
 import {artcilesDB} from "./api/articles";
 import Image from "next/image";
-import Link from "next/link";
 
 // Page where you can read articles about herbs.
 function Articles() {
     const [searchTerm, setSearchTerm] = useState("");
     const handleChange = (event: any) => {
         setSearchTerm(event.target.value);
+    };
+
+    const ExpandableText = ({children, descriptionLength}: any) => {
+        const fullText = children;
+
+        // Set the initial state of the text to be collapsed
+        const [isExpanded, setIsExpanded] = useState(false);
+
+        // This function is called when the read more/less button is clicked
+        const toggleText = () => {
+            setIsExpanded(!isExpanded);
+        };
+
+
+        return (
+            <p className='text'>
+                {isExpanded ? fullText : `${fullText.slice(0, descriptionLength)}...`}<br/>
+                <div onClick={toggleText} className='btn btn-article'>
+                    {isExpanded ? 'Show less' : 'Show more'}
+                </div>
+            </p>
+        );
     };
 
     const results = artcilesDB.filter(article =>
@@ -27,48 +48,42 @@ function Articles() {
                     Pellentesque elit uillamcorper dignissim cras tincidunt lobortis feugiat. At tempor commodo
                     ullamcorper a lacus vestibulum sed arcu non.</p>
                 <input
-                            type="text"
-                            className="form-control searching-child searching-articles"
-                            placeholder="Search"
-                            value={searchTerm}
-                            onChange={handleChange}
+                    type="text"
+                    className="form-control searching-child searching-articles"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={handleChange}
                 />
             </div>
             <div>
+
+
                 {results.map((article) =>
                     <div>
                         <div>
                             <div className="article-card">
                                 <div className="article-img">
-                                    <Image src={article.imageArtilces} className="img-fluid rounded-start" />
+                                    <Image src={article.imageArtilces} className="img-fluid rounded-start"/>
                                 </div>
-                                <div >
+                                <div>
                                     <div>
                                         <h5>{article.title}</h5>
-                                        <p>{article.shortDescription}</p>
-                                    </div>
-                                    <div className="collapse " id={"article" + article.id}>
-                                        <div className="card card-body long-description-article">
+                                        {article.shortDescription} < br/>< br/>
+
+
+                                        <ExpandableText descriptionLength={120}>
                                             {article.longDescription}
-                                        </div>
+                                        </ExpandableText>
+
+
                                     </div>
 
-                                    <Link href={"#article" + article.id} className="btn btn-article"
-                                          data-bs-toggle="collapse"
-                                          role="button" aria-expanded="false" aria-controls={"article" + article.id}>
-                                        <span className="collapsed">
-                                            Show more
-                                        </span>
-                                        <span className="expanded">
-                                            Show less
-                                        </span>
-                                    </Link>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )
-                })
+                }
             </div>
         </div>
     );
