@@ -34,20 +34,19 @@ function HerbsByName() {
     );
 
     return (<div>
-            <div className="background-img welcome">
+            <div id="first">
                 <h5>You might think that Icelandic flora is poor...</h5>
             </div>
-            <div className="center-element high-div">
+            <div className="high-div homePageDecription">
                 <h5>...and you might be right</h5>
-                <p>
-                    But! Between the lava fields and glaciers you can find plenty of medical herbs, at least 85,
-                    that can help you to improve your life.
-                    Tough climate made them very potent, few leaves taken from birch won’t harm the tree, but their
-                    diuretic properties can help you with getting rid of excess water in your body. <br/>Some
-                    things are just good to know and that’s why this website exists. <br/>
-                    We categorised local herbs to
-                    help you find the ones for your current needs. Enjoy!
-                </p>
+                But! Between the lava fields and glaciers you can find plenty of medical herbs, at least 85,
+                that can help you to improve your life.
+                Tough climate made them very potent, few leaves taken from birch won’t harm the tree, but their
+                diuretic properties can help you with getting rid of excess water in your body. <br/>Some
+                things are just good to know and that’s why this website exists. <br/>
+                We categorised local herbs to
+                help you find the ones for your current needs. Enjoy!
+
             </div>
 
             <div className="center-element search-herb">
@@ -72,6 +71,7 @@ function HerbsByName() {
             </div>
             <div className="space-around">
                 {results.map((single) =>
+                    // eslint-disable-next-line react/jsx-key
                     <Link href={"/herb/" + single.id}>
                         <div className="herb-card">
                             <div>
@@ -86,7 +86,9 @@ function HerbsByName() {
                     </Link>
                 )}
             </div>
+            <div id="second">
 
+            </div>
         </div>
 
     )

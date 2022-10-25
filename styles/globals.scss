@@ -1,17 +1,39 @@
+$theme-colors: (
+        "primary": green,
+);
+
+$dark-green: #466803;
+$super-dark-green: #0F3325;
+$maincolor: white;
+$shadow-color: lightgray;
+
+@mixin parallax-background($file) {
+  background: url($file) no-repeat center center fixed;
+  @include background-size(cover);
+}
+
+@mixin background-size($size){
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+  background-size: $size;
+}
+
+
+$parallax-height: 100vh;
+$center-margin: 0px auto;
+
+$parallax-height: 100vh;
+$center-margin: 0px auto;
+$theme: #2e3738;
+
+
 #first {
-  background: url("../public/images/Clement-landscape-1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  @include parallax-background("../public/images/Clement-landscape-1.jpg");
 }
 
 #second {
-  background: url("../public/images/Clement-landscape-1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  @include parallax-background("../public/images/Clement-landscape-1.jpg");
 }
 
 #first, #second {
@@ -21,53 +43,56 @@
   overflow-x: hidden;
   overflow-y: auto;
   transform: translateZ(-1px);
-}
-#first h1, #second h1 {
-  text-transform: uppercase;
-  font-family: "Bitter", serif;
-  letter-spacing: 0.06em;
-  font-size: 120px;
-  color: #2e3738;
-  opacity: 0.7;
-  text-align: center;
-}
-#first h5, #second h5 {
-  padding: 5%;
+  h1{
+    text-transform: uppercase;
+    font-family: 'Bitter', serif;
+    letter-spacing: 0.06em;
+    font-size: 120px;
+    color: $theme;
+    opacity: 0.7;
+    text-align: center;
+  }
+  h5 {
+    padding: 5%;
+  }
 }
 
 /* overall changes */
+
+
 body {
-  font-family: "Questrial", sans-serif;
-  background-color: white;
+  font-family: 'Questrial', sans-serif;
+  background-color: $maincolor;
   text-align: center;
-  color: #466803;
+  color: $dark-green;
   padding-right: 6%;
 }
 
 a, Link {
   text-decoration: none;
-  color: #466803;
+  color: $dark-green;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
 
 a:hover {
-  color: #0F3325;
+  color: $super-dark-green;
   font-size: 105%;
 }
 
 .btn {
-  background-color: white;
-  color: #466803;
-  border: #0F3325 solid 0.5px;
-  transition: background-color 1s linear;
+  background-color: $maincolor;
+  color: $dark-green;
+  border: $super-dark-green solid 0.5px;
+  transition: background-color 1s linear ;
   margin: 2%;
 }
 
 .btn:hover, .button:hover {
-  color: white;
-  background-color: #466803;
+  color: $maincolor;
+  background-color: $dark-green;
 }
+
 
 .center-element {
   display: flex;
@@ -105,7 +130,7 @@ input, textarea, button, img {
   height: 100%;
   align-items: center;
   font-size: 110%;
-  background-color: white;
+  background-color: $maincolor;
   transition: right 0.5s linear;
   padding: 1%;
   margin-top: -5%;
@@ -119,7 +144,7 @@ input, textarea, button, img {
 }
 
 .navigation:hover {
-  right: 0;
+  right:0;
 }
 
 .arrow {
@@ -137,6 +162,7 @@ input, textarea, button, img {
 }
 
 /* Articles $ Workshops */
+
 .workshop-card, .article-card {
   max-width: 80%;
   display: grid;
@@ -152,7 +178,7 @@ input, textarea, button, img {
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: white;
+  background-color: $maincolor;
 }
 
 .add-workshop {
@@ -160,13 +186,13 @@ input, textarea, button, img {
   display: flex;
   justify-content: center;
 }
-
 .form-workshop {
-  background-color: white;
+  background-color: $maincolor;
   border: none;
 }
 
 /* HerbsByName */
+
 .background-img {
   background-image: url("../public/images/Clement-landscape-1.jpg");
   background-repeat: no-repeat;
@@ -174,6 +200,7 @@ input, textarea, button, img {
   width: 100%;
   height: 100%;
 }
+
 
 .homePageDecription {
   padding: 10%;
@@ -200,7 +227,10 @@ input, textarea, button, img {
   transform: scale(1.1);
 }
 
+
 /* HerbsBySymptom */
+
+
 .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
   display: flex;
   background-color: lightgray;
@@ -212,11 +242,11 @@ input, textarea, button, img {
 }
 
 .herb-name-box div {
-  max-width: 30%;
+    max-width: 30%;
 }
 
 .symptom-box p, .workshop-box p, .article-box p {
-  width: 40%;
+  width: 40%
 }
 
 .symptom-box div, .workshop-box div, .article-box input {
@@ -234,8 +264,8 @@ input, textarea, button, img {
   border-radius: 7px;
 }
 
-.symptom-card div:first-child {
-  border-bottom: 1px solid lightgray;
+.symptom-card div:first-child{
+  border-bottom:  1px solid lightgray;
 }
 
 .activated {
@@ -244,12 +274,13 @@ input, textarea, button, img {
 }
 
 /* Contact */
+
 .contact-box form {
   width: 200%;
 }
 
-.contact-box p {
-  width: 60%;
+.contact-box p{
+  width: 60%
 }
 
 .contactForm {
@@ -264,18 +295,20 @@ input, textarea, button, img {
   display: grid;
 }
 
+
 /* other */
-[aria-expanded=false] > .expanded,
-[aria-expanded=true] > .collapsed {
+
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
   display: none;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 700px){
   .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
     flex-direction: column;
   }
   .symptom-box p, .workshop-box p, .article-box p {
-    width: 90%;
+    width: 90%
   }
   .symptom-box img, .workshop-box img, .article-box input {
     width: 90%;
@@ -283,7 +316,8 @@ input, textarea, button, img {
   .center-element p {
     max-width: 100%;
   }
-  .workshop-card, .article-card {
+
+  .workshop-card, .article-card{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -294,10 +328,9 @@ input, textarea, button, img {
     grid-template-columns: 1fr 2fr;
   }
 }
+
 @media print {
-  a[href^=http]:after {
+  a[href^="http"]:after {
     content: " (" attr(href) ")";
   }
 }
-
-/*# sourceMappingURL=globals.css.map */

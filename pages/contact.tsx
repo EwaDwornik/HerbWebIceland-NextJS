@@ -1,5 +1,6 @@
 import React from 'react';
-import { Formik, Field, Form } from "formik";
+import {Formik, Field, Form, FormikHelpers} from "formik";
+import {ContactValues} from "../model";
 
 
 // Simple contact page.
@@ -17,86 +18,57 @@ function Contact() {
                     Pellentesque elit uillamcorper dignissim cras tincidunt lobortis feugiat. At tempor commodo
                     ullamcorper a lacus vestibulum sed arcu non.</p>
             </div>
-            <div className="App">
-                <h1>Contact Us</h1>
-                <Formik
-                    initialValues={{ name: "", email: "" }}
-                    onSubmit={async (values) => {
-                        await new Promise((resolve) => setTimeout(resolve, 500));
+            <Formik
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                }}
+                onSubmit={(
+                    values: ContactValues,
+                    {setSubmitting}: FormikHelpers<ContactValues>
+                ) => {
+                    setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
-                    }}
-                >
-                    <Form>
-                        <Field name="name" type="text" />
-                        <Field name="lastname" type="text" />
-                        <Field name="email" type="email" />
-                        <Field name="subject" type="text" />
-                        <Field name="message" type="text" />
+                        setSubmitting(false);
+                    }, 500);
+                }}
+            >
+                <Form className="contactForm">
+                    <div className="formRow">
+                        <label htmlFor="firstName">First Name</label>
+                        <Field id="firstName" name="firstName" placeholder="John"/>
 
-
-                        <button type="submit">Submit</button>
-                    </Form>
-                </Formik>
-            </div>
-            <form>
-                <div className="row">
-                    <div className="col-lg-6">
-                        <div className="form-group mt-3">
-                            <label className="contact-lable">First Name</label>
-                            <input name="name" id="name" className="form-control" type="text"/>
-                        </div>
+                        <label htmlFor="lastName">Last Name</label>
+                        <Field id="lastName" name="lastName" placeholder="Brown"/>
+                    </div>
+                    <div className="formRow">
+                        <label htmlFor="email">Email</label>
+                        <Field
+                            id="email"
+                            name="email"
+                            placeholder="john@brown.com"
+                            type="email"
+                        />
+                        <label htmlFor="subject">Subject</label>
+                        <Field id="subject" name="subject" placeholder="subject"/>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="form-group mt-3">
-                            <label className="contact-lable">Last Name</label>
-                            <input name="name" id="lastname" className="form-control"
-                                   type="text"/>
-                        </div>
-                    </div>
-                </div>
+                    <label htmlFor="message">Message</label>
+                    <Field component='textarea' row={7} id="message" name="message" placeholder="message"/>
 
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="form-group mt-3">
-                            <label className="contact-lable">Email Address</label>
-                            <input name="email" id="email" className="form-control" type="text"/>
-                        </div>
-                    </div>
-                </div>
+                    <button type="submit">Submit</button>
+                </Form>
+            </Formik>
 
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="form-group mt-3">
-                            <label className="contact-lable">Subject</label>
-                            <input name="subject" id="subject" className="form-control"
-                                   type="text"/>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="form-group mt-3">
-                            <label className="contact-lable">Your Message</label>
-                            <textarea name="comments" id="comments"
-                                      className="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-12 mt-3 text-right">
-                        <input id="submit" name="send"
-                               className="btn"
-                               value="Send Message" type="submit"/>
-                        <div id="simple-msg"></div>
-                    </div>
-                </div>
-            </form>
         </div>
     );
 }
 
 export default Contact;
+
 
 
 
