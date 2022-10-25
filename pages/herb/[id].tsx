@@ -22,7 +22,7 @@ export default function HerbPage() {
                     <div>
                         {herb.medicalUses.map((use: string) => (
                             <Link
-                                href={"/symptom/#" + deleteSpace(use)}
+                                href={"/symptom?searchedSymptom=" + deleteSpace(use)}
                                 scroll={true}>
                                 <a><h5>{use}</h5></a>
                             </Link>)
@@ -46,10 +46,11 @@ export default function HerbPage() {
                 </div>
             </div>
         )
-    } else {
+    }
+
         return (<div className="page">
             <h4>Herb with this id doesn't exist in the data base yet.</h4>
         </div>)
-    }
+
 }
 
