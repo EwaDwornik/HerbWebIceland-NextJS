@@ -22,7 +22,7 @@ export default function HerbPage() {
                     <div>
                         {herb.medicalUses.map((use: string) => (
                             <Link
-                                href={"/symptom/#" + deleteSpace(use)}
+                                href={"/symptom?searchedSymptom=" + deleteSpace(use)}
                                 scroll={true}>
                                 <a><h5>{use}</h5></a>
                             </Link>)
