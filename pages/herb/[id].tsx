@@ -46,10 +46,11 @@ export default function HerbPage() {
                 </div>
             </div>
         )
-    } else {
+    }
+
         return (<div className="page">
             <h4>Herb with this id doesn't exist in the data base yet.</h4>
         </div>)
-    }
+
 }
 
