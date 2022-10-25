@@ -38,8 +38,8 @@ function HerbsByName() {
                 <h5>You might think that Icelandic flora is poor...</h5>
             </div>
             <div className="center-element high-div">
+                <h5>...and you might be right</h5>
                 <p>
-                    <h5>...and you might be right</h5>
                     But! Between the lava fields and glaciers you can find plenty of medical herbs, at least 85,
                     that can help you to improve your life.
                     Tough climate made them very potent, few leaves taken from birch won’t harm the tree, but their

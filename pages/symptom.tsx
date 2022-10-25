@@ -11,17 +11,8 @@ import Link from 'next/link';
 function Symptom() {
     const hash: any = useRouter();
     let activeClassName: string;
+    console.log(hash);
 
-    // selecting a chosen element to be able to move it in front of others
-    useEffect(() => {
-        const selectedId: any = document.getElementById(hash);
-        console.log(selectedId);
-        /*
-        "adding a chosen div to the beginning of the list"
-        chosenSymptom.push(selectedId);
-        console.log(chosenSymptom)
-        */
-    }, [])
 
     const symptomsCard: any[] = [];
     allMedicalUses.map((use) => {
