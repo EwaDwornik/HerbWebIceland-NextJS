@@ -6,19 +6,19 @@ import {herbsDB} from "./api/herbs";
 import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link';
+import Loading from "../components/test";
 
 // Page where user can see what herbs are good for a certain issue.
 function Symptom() {
-    const hash: any = useRouter();
+    const router = useRouter();
     let activeClassName: string;
-    console.log(hash);
-
+    const searchedSymptom = router?.query?.searchedSymptom
 
     const symptomsCard: any[] = [];
     allMedicalUses.map((use) => {
         let herbsWithSymptom = herbsDB.filter(herb => (herb.medicalUses).includes(use))
 
-        if ('#' + deleteSpace(use) === hash) {
+        if (deleteSpace(use) === searchedSymptom) {
             activeClassName = 'card m-2 symptom-card text-center activated';
         } else {
             activeClassName = 'card m-2 symptom-card text-center'
@@ -44,7 +44,9 @@ function Symptom() {
     })
 
     return (<div>
+            {Loading}
             <div className="symptom-box">
+
                 <div>
                     <Image src={ginkgo} alt="ginkgo"/>
                 </div>
