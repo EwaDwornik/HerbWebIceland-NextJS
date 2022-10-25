@@ -1,4 +1,6 @@
 import React from 'react';
+import { Formik, Field, Form } from "formik";
+
 
 // Simple contact page.
 function Contact() {
@@ -15,7 +17,27 @@ function Contact() {
                     Pellentesque elit uillamcorper dignissim cras tincidunt lobortis feugiat. At tempor commodo
                     ullamcorper a lacus vestibulum sed arcu non.</p>
             </div>
+            <div className="App">
+                <h1>Contact Us</h1>
+                <Formik
+                    initialValues={{ name: "", email: "" }}
+                    onSubmit={async (values) => {
+                        await new Promise((resolve) => setTimeout(resolve, 500));
+                        alert(JSON.stringify(values, null, 2));
+                    }}
+                >
+                    <Form>
+                        <Field name="name" type="text" />
+                        <Field name="lastname" type="text" />
+                        <Field name="email" type="email" />
+                        <Field name="subject" type="text" />
+                        <Field name="message" type="text" />
 
+
+                        <button type="submit">Submit</button>
+                    </Form>
+                </Formik>
+            </div>
             <form>
                 <div className="row">
                     <div className="col-lg-6">
