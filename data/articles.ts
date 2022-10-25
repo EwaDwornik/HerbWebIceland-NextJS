@@ -1,6 +1,6 @@
-import {Article} from "../../model";
-import name from "../../public/images/name.png"
-import ewablom from "../../public/images/ewablóm.jpeg"
+import {Article} from "../model";
+import name from "../public/images/name.png"
+import ewablom from "../public/images/ewablóm.jpeg"
 
 let nextIdArticle = 0;
 

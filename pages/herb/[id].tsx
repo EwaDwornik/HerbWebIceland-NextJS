@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router'
-import {herbsDB} from "../api/herbs";
+import {herbsDB} from "../../data/herbs";
 import {Language} from "../../model";
 import {deleteSpace} from "../../services/utilities";
 import React from "react";
@@ -22,7 +22,7 @@ export default function HerbPage() {
                     <div>
                         {herb.medicalUses.map((use: string) => (
                             <Link
-                                href={"/symptom/#" + deleteSpace(use)}
+                                href={"/symptom?searchedSymptom=" + deleteSpace(use)}
                                 scroll={true}>
                                 <a><h5>{use}</h5></a>
                             </Link>)

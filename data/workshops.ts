@@ -1,6 +1,6 @@
-import { Workshop} from "../../model";
-import workshopimg1 from "../../public/images/workshop-img1.jpg";
-import workshopimg2 from "../../public/images/workshop-img2.jpg"
+import { Workshop} from "../model";
+import workshopimg1 from "../public/images/workshop-img1.jpg";
+import workshopimg2 from "../public/images/workshop-img2.jpg"
 
 
 let nextIdWorkshop = 0;

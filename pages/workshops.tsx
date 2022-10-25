@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import WorkshopForm from "./workshop-form";
 import {Workshop} from "../model";
 import workshop from "../public/images/workshop.jpg"
-import {workshopsDB} from "./api/workshops";
+import {workshopsDB} from "../data/workshops";
 import Image from "next/image";
 
 //list of all herbal workshops that happen in Iceland.

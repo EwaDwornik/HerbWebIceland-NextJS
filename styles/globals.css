@@ -11,7 +11,7 @@ body {
   background-color: var(--maincolor);
   text-align: center;
   color: var(--dark-green);
-  padding-right: 5%;
+  padding-right: 6%;
 }
 
 a, Link {
@@ -218,7 +218,6 @@ a:hover {
 .activated {
   box-shadow: 10px 5px 10px 10px darkgray;
   color: pink;
-  background-color: #0070f3;
 }
 
 .contact-box form {

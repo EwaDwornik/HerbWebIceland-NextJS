@@ -36,3 +36,12 @@ export interface Article {
     shortDescription: string,
     longDescription: string,
 }
+
+
+export interface ContactValues {
+    firstName: string;
+    lastName: string;
+    email: string;
+    subject: string;
+    message: string;
+}

@@ -1,5 +1,5 @@
 import {Herb, Language} from "../model";
-import {herbsDB} from "./api/herbs";
+import {herbsDB} from "../data/herbs";
 import Link from "next/link";
 import Image from "next/image";
 

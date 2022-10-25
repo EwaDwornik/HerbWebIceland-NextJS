@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {artcilesDB} from "./api/articles";
+import {artcilesDB} from "../data/articles";
 import Image from "next/image";
 
 // Page where you can read articles about herbs.

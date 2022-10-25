@@ -1,7 +1,7 @@
-import {herbsDB} from "../pages/api/herbs";
+import {herbsDB} from "../data/herbs";
 import {Article, Workshop} from "../model";
-import {workshopsDB} from "../pages/api/workshops";
-import {artcilesDB} from "../pages/api/articles";
+import {workshopsDB} from "../data/workshops";
+import {artcilesDB} from "../data/articles";
 
 let nextIdHerb = 0;
 

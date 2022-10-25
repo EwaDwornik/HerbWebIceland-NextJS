@@ -1,24 +1,24 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Language} from "../model";
 import ginkgo from '../public/images/ginkgo-pill.png'
 import {allMedicalUses, deleteSpace} from "../services/utilities";
-import {herbsDB} from "./api/herbs";
+import {herbsDB} from "../data/herbs";
 import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link';
 
 // Page where user can see what herbs are good for a certain issue.
 function Symptom() {
-    const hash: any = useRouter();
+    const router = useRouter();
     let activeClassName: string;
-    console.log(hash);
 
+    const searchedSymptom = router?.query?.searchedSymptom
 
     const symptomsCard: any[] = [];
     allMedicalUses.map((use) => {
         let herbsWithSymptom = herbsDB.filter(herb => (herb.medicalUses).includes(use))
 
-        if ('#' + deleteSpace(use) === hash) {
+        if (deleteSpace(use) === searchedSymptom) {
             activeClassName = 'card m-2 symptom-card text-center activated';
         } else {
             activeClassName = 'card m-2 symptom-card text-center'

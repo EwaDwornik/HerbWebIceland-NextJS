@@ -1,9 +1,9 @@
-import {Herb} from "../../model";
-import yarrow from "../../public/images/yarrow.png"
-import alchemilla from "../../public/images/alchemilla.png"
-import birch from "../../public/images/birch.png"
-import garlic from "../../public/images/garlic.png"
-import angelica from "../../public/images/angelica.png"
+import {Herb} from "../model";
+import yarrow from "../public/images/yarrow.png"
+import alchemilla from "../public/images/alchemilla.png"
+import birch from "../public/images/birch.png"
+import garlic from "../public/images/garlic.png"
+import angelica from "../public/images/angelica.png"
 
 
 let nextIdHerb = 0;
