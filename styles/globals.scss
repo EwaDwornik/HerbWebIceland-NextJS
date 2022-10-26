@@ -1,18 +1,30 @@
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/Calendas-Plus-Regular/Desktop/Calendas_Plus.otf');
+  src: url('/fonts/Calendas-Plus-Regular/Webfont/Calendas-Plus-Regular-Webfont/calendas_plus-webfont.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 $theme-colors: (
         "primary": green,
 );
 
 $dark-green: #466803;
 $super-dark-green: #0F3325;
-$maincolor: white;
+$maincolor: whitesmoke;
 $shadow-color: lightgray;
+$box-shadow: 5px 5px 5px 5px lightgray;
+$box-shadow-hover: 10px 5px 5px 5px lightgray;
+
 
 @mixin parallax-background($file) {
   background: url($file) no-repeat center center fixed;
   @include background-size(cover);
 }
 
-@mixin background-size($size){
+@mixin background-size($size) {
   -webkit-background-size: $size;
   -moz-background-size: $size;
   -o-background-size: $size;
@@ -28,44 +40,14 @@ $center-margin: 0px auto;
 $theme: #2e3738;
 
 
-#first {
-  @include parallax-background("../public/images/Clement-landscape-1.jpg");
-}
-
-#second {
-  @include parallax-background("../public/images/Clement-landscape-1.jpg");
-}
-
-#first, #second {
-  width: 100%;
-  height: 600px;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transform: translateZ(-1px);
-  h1{
-    text-transform: uppercase;
-    font-family: 'Bitter', serif;
-    letter-spacing: 0.06em;
-    font-size: 120px;
-    color: $theme;
-    opacity: 0.7;
-    text-align: center;
-  }
-  h5 {
-    padding: 5%;
-  }
-}
-
 /* overall changes */
 
 
 body {
-  font-family: 'Questrial', sans-serif;
+  font-family: 'OpenSans', Calendas-Plus;
   background-color: $maincolor;
   text-align: center;
   color: $dark-green;
-  padding-right: 6%;
 }
 
 a, Link {
@@ -84,13 +66,58 @@ a:hover {
   background-color: $maincolor;
   color: $dark-green;
   border: $super-dark-green solid 0.5px;
-  transition: background-color 1s linear ;
+  transition: background-color 1s linear;
   margin: 2%;
 }
 
 .btn:hover, .button:hover {
   color: $maincolor;
   background-color: $dark-green;
+}
+
+
+:focus {
+  outline: none;
+}
+
+input, select {
+  color: $super-dark-green;
+  padding: 2%;
+  border-radius: 7px 7px 0 0;
+}
+
+select {
+  min-width: 200px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.effect-green {
+  border: 0;
+  padding: 7px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.effect-green ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4caf50;
+  transition: 0.4s;
+}
+
+.effect-green:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
 }
 
 
@@ -113,7 +140,7 @@ a:hover {
   margin: 1%;
 }
 
-input, textarea, button, img {
+textarea, button, img {
   border-radius: 7px;
 }
 
@@ -144,7 +171,7 @@ input, textarea, button, img {
 }
 
 .navigation:hover {
-  right:0;
+  right: 0;
 }
 
 .arrow {
@@ -160,6 +187,110 @@ input, textarea, button, img {
 .herb-img, .vegetation-img {
   max-height: 200px;
 }
+
+/* Home */
+
+
+#first {
+  @include parallax-background("../public/images/Clement-landscape-1.jpg");
+}
+
+#second {
+  @include parallax-background("../public/images/Clement-landscape-2.jpg");
+}
+
+#first, #second {
+  width: 100%;
+  height: 600px;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateZ(-1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 9vw;
+    color: $maincolor;
+    opacity: 0.5;
+  }
+
+  h2 {
+    padding: 5%;
+  }
+
+  img {
+    opacity: 0.5;
+    width: auto;
+  }
+
+  img:hover {
+    opacity: 0.6;
+    width: auto;
+  }
+
+  div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: $maincolor;
+    padding: 1%;
+
+    a {
+      text-decoration: none;
+      color: $maincolor;
+    }
+  }
+
+}
+
+
+.home-page-decription {
+  padding: 10%;
+
+}
+
+.home-page-navigation {
+  padding: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  div {
+    width: 150px;
+    border: $box-shadow;
+    scrollBehavior: smooth;
+  }
+}
+
+#herbs-by-name {
+  padding: 5%;
+}
+
+.herb-card {
+  width: 200px;
+  height: 250px;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  align-items: center;
+  box-shadow: $box-shadow;
+  margin: 2%;
+  transition: transform 1s ease;
+  border-radius: 7px;
+
+  img {
+    max-height: 120px;
+  }
+}
+
+.herb-card:hover, .symptom-card:hover {
+  box-shadow: $box-shadow-hover;
+  transform: scale(1.1);
+}
+
 
 /* Articles $ Workshops */
 
@@ -186,47 +317,11 @@ input, textarea, button, img {
   display: flex;
   justify-content: center;
 }
+
 .form-workshop {
   background-color: $maincolor;
   border: none;
 }
-
-/* HerbsByName */
-
-.background-img {
-  background-image: url("../public/images/Clement-landscape-1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-
-.homePageDecription {
-  padding: 10%;
-}
-
-.herb-card {
-  width: 200px;
-  height: 250px;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  align-items: center;
-  box-shadow: 5px 5px 5px 5px lightgray;
-  margin: 5%;
-  transition: transform 1s ease;
-  border-radius: 7px;
-}
-
-.herb-card img {
-  max-height: 120px;
-}
-
-.herb-card:hover, .symptom-card:hover {
-  box-shadow: 10px 5px 5px 5px lightgray;
-  transform: scale(1.1);
-}
-
 
 /* HerbsBySymptom */
 
@@ -239,17 +334,17 @@ input, textarea, button, img {
   justify-content: space-between;
   align-items: center;
   border-radius: 7px;
-}
 
-.herb-name-box div {
+  div {
     max-width: 30%;
+  }
 }
 
 .symptom-box p, .workshop-box p, .article-box p {
   width: 40%
 }
 
-.symptom-box div, .workshop-box div, .article-box input {
+.symptom-box div, .workshop-box div, .article-box {
   width: 50%;
 }
 
@@ -257,42 +352,46 @@ input, textarea, button, img {
   width: 200px;
   display: grid;
   align-items: center;
-  box-shadow: 5px 5px 5px 5px lightgray;
+  box-shadow: $box-shadow;
   border: 0.5px lightgray solid;
   padding: 5%;
   transition: transform 1s ease;
   border-radius: 7px;
-}
 
-.symptom-card div:first-child{
-  border-bottom:  1px solid lightgray;
+  div:first-child {
+    border-bottom: 1px solid lightgray;
+  }
 }
 
 .activated {
-  box-shadow: 10px 5px 10px 10px darkgray;
+  box-shadow: $box-shadow-hover;
   color: darkkhaki;
 }
 
 /* Contact */
 
-.contact-box form {
-  width: 200%;
-}
+.contact-box {
+  form {
+    width: 200%;
+  }
 
-.contact-box p{
-  width: 60%
+  p {
+    width: 60%
+  }
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   margin: 2%;
   text-align: start;
 }
 
 .formRow {
   display: grid;
+  div {
+width: 100%;
+  }
 }
 
 
@@ -303,7 +402,8 @@ input, textarea, button, img {
   display: none;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
+
   .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
     flex-direction: column;
   }
@@ -317,7 +417,7 @@ input, textarea, button, img {
     max-width: 100%;
   }
 
-  .workshop-card, .article-card{
+  .workshop-card, .article-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -334,3 +434,5 @@ input, textarea, button, img {
     content: " (" attr(href) ")";
   }
 }
+
+

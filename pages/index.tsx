@@ -41,7 +41,7 @@ function Home() {
             <div className="home-page-decription">
                 <h5>...and you might be right</h5>
                 But! Between the lava fields and glaciers you can find plenty of medical herbs, at least 85,
-                that can help you to improve your life.<br />
+                that can help you to improve your life.<br/>
                 Tough climate made them very potent, few leaves taken from birch won’t harm the tree, but their
                 diuretic properties can help you with getting rid of excess water in your body. <br/>Some
                 things are just good to know and that’s why this website exists. <br/>
@@ -59,25 +59,32 @@ function Home() {
             </div>
             <div id="second"></div>
             <div id="herbs-by-name" className="center-element">
-                <div className="space-around">
+                <div className="space-around pos-relative">
                     <select
-                        className="form-select searching-child"
-                        onChange={(e: any) => sortStateBy(e.target.value)}>
-                        <option selected>sort by language</option>
+                        onChange={(e: any) => sortStateBy(e.target.value)}
+                        className="effect-green">
+                        <option selected>    sort by language</option>
                         <option value="icelandic">Icelandic</option>
                         <option value="english">English</option>
                     </select>
+                    <span className="focus-border"></span>
+
                 </div>
-                <div className="center-element">
+
+                <div className="center-element pos-relative">
                     <input
                         type="text"
-                        className="form-control searching-child"
-                        placeholder="Search"
+                        placeholder=" search"
+                        className="effect-green"
                         value={searchTerm}
                         onChange={handleChange}
                     />
+                    <span className="focus-border"></span>
+
                 </div>
             </div>
+
+
             <div className="space-around">
                 {results.map((single) =>
                     // eslint-disable-next-line react/jsx-key
@@ -87,8 +94,8 @@ function Home() {
                                 <Image src={single.imageHerb}/>
                             </div>
                             <div>
-                                <h5 className="card-title">{single.names[sortedBy]} </h5>
-                                <p className="card-text">{single.names[Language.latin]}</p>
+                                <h5>{single.names[sortedBy]} </h5>
+                                <p>{single.names[Language.latin]}</p>
                             </div>
 
                         </div>
