@@ -1,47 +1,16 @@
-#first {
-  background: url("../public/images/Clement-landscape-1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+@font-face {
+  font-family: "OpenSans";
+  src: url("/fonts/Calendas-Plus-Regular/Desktop/Calendas_Plus.otf");
+  src: url("/fonts/Calendas-Plus-Regular/Webfont/Calendas-Plus-Regular-Webfont/calendas_plus-webfont.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
-
-#second {
-  background: url("../public/images/Clement-landscape-1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-#first, #second {
-  width: 100%;
-  height: 600px;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transform: translateZ(-1px);
-}
-#first h1, #second h1 {
-  text-transform: uppercase;
-  font-family: "Bitter", serif;
-  letter-spacing: 0.06em;
-  font-size: 120px;
-  color: #2e3738;
-  opacity: 0.7;
-  text-align: center;
-}
-#first h5, #second h5 {
-  padding: 5%;
-}
-
 /* overall changes */
 body {
-  font-family: "Questrial", sans-serif;
-  background-color: white;
+  font-family: "OpenSans", Calendas-Plus;
+  background-color: whitesmoke;
   text-align: center;
   color: #466803;
-  padding-right: 6%;
 }
 
 a, Link {
@@ -57,7 +26,7 @@ a:hover {
 }
 
 .btn {
-  background-color: white;
+  background-color: whitesmoke;
   color: #466803;
   border: #0F3325 solid 0.5px;
   transition: background-color 1s linear;
@@ -65,7 +34,7 @@ a:hover {
 }
 
 .btn:hover, .button:hover {
-  color: white;
+  color: whitesmoke;
   background-color: #466803;
 }
 
@@ -105,7 +74,7 @@ input, textarea, button, img {
   height: 100%;
   align-items: center;
   font-size: 110%;
-  background-color: white;
+  background-color: whitesmoke;
   transition: right 0.5s linear;
   padding: 1%;
   margin-top: -5%;
@@ -136,6 +105,104 @@ input, textarea, button, img {
   max-height: 200px;
 }
 
+/* Home */
+#first {
+  background: url("../public/images/Clement-landscape-1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#second {
+  background: url("../public/images/Clement-landscape-2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#first, #second {
+  width: 100%;
+  height: 600px;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateZ(-1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#first h1, #second h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 9vw;
+  color: whitesmoke;
+  opacity: 0.5;
+}
+#first h2, #second h2 {
+  padding: 5%;
+}
+#first img, #second img {
+  opacity: 0.7;
+  width: auto;
+}
+#first img:hover, #second img:hover {
+  opacity: 0.8;
+  width: auto;
+}
+#first div, #second div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: whitesmoke;
+  padding: 1%;
+}
+#first div a, #second div a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.home-page-decription {
+  padding: 10%;
+}
+
+.home-page-navigation {
+  padding: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.home-page-navigation div {
+  width: 150px;
+  border: 5px 5px 5px 5px lightgray;
+  scrollBehavior: smooth;
+}
+
+#herbs-by-name {
+  padding: 5%;
+}
+
+.herb-card {
+  width: 200px;
+  height: 250px;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  align-items: center;
+  box-shadow: 5px 5px 5px 5px lightgray;
+  margin: 5%;
+  transition: transform 1s ease;
+  border-radius: 7px;
+}
+.herb-card img {
+  max-height: 120px;
+}
+
+.herb-card:hover, .symptom-card:hover {
+  box-shadow: 10px 5px 5px 5px lightgray;
+  transform: scale(1.1);
+}
+
 /* Articles $ Workshops */
 .workshop-card, .article-card {
   max-width: 80%;
@@ -152,7 +219,7 @@ input, textarea, button, img {
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: white;
+  background-color: whitesmoke;
 }
 
 .add-workshop {
@@ -162,42 +229,8 @@ input, textarea, button, img {
 }
 
 .form-workshop {
-  background-color: white;
+  background-color: whitesmoke;
   border: none;
-}
-
-/* HerbsByName */
-.background-img {
-  background-image: url("../public/images/Clement-landscape-1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.homePageDecription {
-  padding: 10%;
-}
-
-.herb-card {
-  width: 200px;
-  height: 250px;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  align-items: center;
-  box-shadow: 5px 5px 5px 5px lightgray;
-  margin: 5%;
-  transition: transform 1s ease;
-  border-radius: 7px;
-}
-
-.herb-card img {
-  max-height: 120px;
-}
-
-.herb-card:hover, .symptom-card:hover {
-  box-shadow: 10px 5px 5px 5px lightgray;
-  transform: scale(1.1);
 }
 
 /* HerbsBySymptom */
@@ -210,8 +243,7 @@ input, textarea, button, img {
   align-items: center;
   border-radius: 7px;
 }
-
-.herb-name-box div {
+.symptom-box div, .contact-box div, .workshop-box div, .article-box div, .herb-name-box div {
   max-width: 30%;
 }
 
@@ -233,13 +265,12 @@ input, textarea, button, img {
   transition: transform 1s ease;
   border-radius: 7px;
 }
-
 .symptom-card div:first-child {
   border-bottom: 1px solid lightgray;
 }
 
 .activated {
-  box-shadow: 10px 5px 10px 10px darkgray;
+  box-shadow: 10px 5px 5px 5px lightgray;
   color: darkkhaki;
 }
 
@@ -247,7 +278,6 @@ input, textarea, button, img {
 .contact-box form {
   width: 200%;
 }
-
 .contact-box p {
   width: 60%;
 }
