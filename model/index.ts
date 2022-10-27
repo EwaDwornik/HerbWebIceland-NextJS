@@ -10,6 +10,7 @@ export interface Herb {
     id: number,
     names: { [name in Language]: string },
     pathImageHerb: string,
+    widthToHeightRatio:number,
     imageVegetation?: string,
     medicalUses: string[],
     sideEffects: string[],

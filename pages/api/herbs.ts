@@ -5,6 +5,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return new Promise(async () => {
         switch (req.method) {
             case "GET":
+                console.log('aa')
                 return res.status(200).json([
                     {
                         names: {
@@ -12,7 +13,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                             latin: "Achillea millefolium",
                             icelandic: 'Vallhumall'
                         },
-                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}/images/yarrow.png`,
+                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}images/yarrow.png`,
+                        widthToHeightRatio: 500/867,
                         medicalUses: ["fever", "common cold", "hay fever", "stomach discomfort"],
                         sideEffects: ["drowsines", "increased urination", "skin irritation"],
                         precautions: ["pregnancy", "breastfeeding", "allergy to ragweed and related plants"],
@@ -26,7 +28,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                             latin: "Alchemilla alpina",
                             icelandic: 'Maríustakkur'
                         },
-                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}/images/alchemilla.png`,
+                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}images/alchemilla.png`,
+                        widthToHeightRatio: 950/1600,
                         medicalUses: ["diarrhea", "vaginal disorders", "menstrual disorders", "menopausal disorders"],
                         sideEffects: [],
                         precautions: ["pregnancy", "brest feeding"],
@@ -40,7 +43,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                             latin: "Allium Sativa",
                             icelandic: 'Hvítlaukur'
                         },
-                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}/images/garlic.png`,
+                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}images/garlic.png`,
+                        widthToHeightRatio: 1,
                         medicalUses: ["high blood pressure", "high blood sugar", "high cholesterol", "stomach discomfort"],
                         sideEffects: ["bad breath", "might increase the risk of bleeding"],
                         precautions: ["Garlic is possibly unsafe when used in medicinal amounts during pregnancy and when breast-feeding"],
@@ -53,7 +57,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                             latin: "Angelica archangelica",
                             icelandic: 'Ætihvönn'
                         },
-                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}/images/angelica.png`,
+                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}images/angelica.png`,
+                        widthToHeightRatio: 1,
                         medicalUses: ["digestive disorders", "respiratory disorders","common cold", "flu" , "stress and anxiety",  "insomnia"],
                         sideEffects: ["Might make your skin more sensitive to sunlight"],
                         precautions: ["pregnancy", "breast-feeding"],
@@ -68,7 +73,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                             latin: "Betula pubescens",
                             icelandic: 'Birki'
                         },
-                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}/images/birch.png`,
+                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}images/birch.png`,
+                        widthToHeightRatio: 518/591,
                         medicalUses: ["joint pain", "kidney stones", "bladder stones", "dandruff"],
                         sideEffects: ["drowsines", "increased urination", "skin irritation"],
                         precautions: ["pregnancy", "breast-feeding", "allergy to wild carrot, mugwort, celery, and other spices", "High blood pressure"],

@@ -32,6 +32,10 @@ function HerbsByName({ herbsDB }: {herbsDB:Herb[]}) {
         (herb.names[Language.icelandic]).toLowerCase().includes(searchTerm)
     );
 
+    const getWidth = (ratio:number) =>{
+        return `${(Math.round(ratio * 10000) / 10000)*100}%`
+    }
+
     return (<div>
             <div className="background-img welcome">
                 <h5>You might think that Icelandic flora is poor...</h5>
@@ -74,7 +78,9 @@ function HerbsByName({ herbsDB }: {herbsDB:Herb[]}) {
                     <Link href={"/herb/" + single.id}>
                         <div className="herb-card">
                             <div>
-                                <Image src={single.pathImageHerb}/>
+                                <Image src={single.pathImageHerb}
+                                       alt='Mountains'
+                                       width={getWidth(single.widthToHeightRatio)} height="100%"/>
                             </div>
                             <div>
                                 <h5 className="card-title">{single.names[sortedBy]} </h5>
@@ -92,22 +98,17 @@ function HerbsByName({ herbsDB }: {herbsDB:Herb[]}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const { access_token } = context.req.cookies;
-
     let herbsDB;
-    if (access_token) {
-        const responseHerbsDB = await fetch(process.env.NEXT_PUBLIC_API_URL + "herbs", {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json",
-                Authorization: `Bearer ${access_token}`,
-            },
-        });
+    const responseHerbsDB = await fetch(process.env.NEXT_PUBLIC_API_URL + "herbs", {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+        },
+    });
 
-        try {
-            herbsDB = await responseHerbsDB.json();
-        } catch (e) {}
-    }
+    try {
+        herbsDB = await responseHerbsDB.json();
+    } catch (e) {}
 
     return {
         props: { herbsDB: herbsDB?.length ? herbsDB : [] },
