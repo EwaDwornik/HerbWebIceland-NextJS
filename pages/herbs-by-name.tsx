@@ -1,5 +1,4 @@
 import {Herb, Language} from "../model";
-import {herbsDB} from "./api/herbs";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,7 +11,7 @@ function sortByLanguage(herbs: Herb[], lang: Language): Herb[] {
     return [...herbs].sort((a: Herb, b: Herb) => (a.names[lang] > b.names[lang]) ? 1 : -1)
 }
 
-function HerbsByName() {
+function HerbsByName({ herbsDB }: {herbsDB:Herb[]}) {
     const defaultLanguage = Language.english;
     const [herbs, setHerbs] = useState(sortByLanguage(herbsDB, defaultLanguage));
     const [sortedBy, setSortedBy] = useState(defaultLanguage);
@@ -75,7 +74,7 @@ function HerbsByName() {
                     <Link href={"/herb/" + single.id}>
                         <div className="herb-card">
                             <div>
-                                <Image src={single.imageHerb}/>
+                                <Image src={single.pathImageHerb}/>
                             </div>
                             <div>
                                 <h5 className="card-title">{single.names[sortedBy]} </h5>
@@ -92,5 +91,27 @@ function HerbsByName() {
     )
 }
 
-export default HerbsByName;
+export const getServerSideProps = async (context: any) => {
+    const { access_token } = context.req.cookies;
 
+    let herbsDB;
+    if (access_token) {
+        const responseHerbsDB = await fetch(process.env.NEXT_PUBLIC_API_URL + "herbs", {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${access_token}`,
+            },
+        });
+
+        try {
+            herbsDB = await responseHerbsDB.json();
+        } catch (e) {}
+    }
+
+    return {
+        props: { herbsDB: herbsDB?.length ? herbsDB : [] },
+    };
+};
+
+export default HerbsByName;
