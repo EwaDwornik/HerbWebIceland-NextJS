@@ -1,13 +1,6 @@
-@font-face {
-  font-family: "OpenSans";
-  src: url("/fonts/Calendas-Plus-Regular/Desktop/Calendas_Plus.otf");
-  src: url("/fonts/Calendas-Plus-Regular/Webfont/Calendas-Plus-Regular-Webfont/calendas_plus-webfont.ttf");
-  font-weight: 400;
-  font-style: normal;
-}
 /* overall changes */
 body {
-  font-family: "OpenSans", Calendas-Plus;
+  font-family: "Comfortaa", cursive;
   background-color: whitesmoke;
   text-align: center;
   color: #466803;
@@ -25,15 +18,15 @@ a:hover {
   font-size: 105%;
 }
 
-.btn {
+.btn, button {
   background-color: whitesmoke;
   color: #466803;
   border: #0F3325 solid 0.5px;
   transition: background-color 1s linear;
-  margin: 2%;
+  margin-top: 5%;
 }
 
-.btn:hover, .button:hover {
+.btn:hover, button:hover {
   color: whitesmoke;
   background-color: #466803;
 }
@@ -42,10 +35,9 @@ a:hover {
   outline: none;
 }
 
-input, select {
+input, select, textarea {
   color: #0F3325;
   padding: 2%;
-  border-radius: 7px 7px 0 0;
 }
 
 select {
@@ -59,6 +51,8 @@ select {
 
 .pos-relative {
   position: relative;
+  display: grid;
+  align-content: start;
 }
 
 .effect-green {
@@ -73,7 +67,7 @@ select {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #4caf50;
+  background-color: #5ca904;
   transition: 0.4s;
 }
 
@@ -101,8 +95,27 @@ select {
   margin: 1%;
 }
 
-textarea, button, img {
+img {
   border-radius: 7px;
+}
+
+.credits {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: right;
+  padding-right: 5%;
+  font-size: 0.7vw;
+}
+.credits a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+::placeholder, label {
+  padding: 5px;
 }
 
 /* Navigation */
@@ -115,7 +128,7 @@ textarea, button, img {
   grid-template-columns: 1fr 2fr;
   grid-gap: 5%;
   justify-content: space-around;
-  height: 100%;
+  height: 110%;
   align-items: center;
   font-size: 110%;
   background-color: whitesmoke;
@@ -157,6 +170,9 @@ textarea, button, img {
   -o-background-size: cover;
   background-size: cover;
 }
+#first p {
+  font-size: 6vw;
+}
 
 #second {
   background: url("../public/images/Clement-landscape-2.jpg") no-repeat center center fixed;
@@ -166,9 +182,25 @@ textarea, button, img {
   background-size: cover;
 }
 
-#first, #second {
+#third {
+  background: url("../public/images/Matt-Hardy.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#fourth {
+  background: url("../public/images/Matt-Hardy-2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#first, #second, #third, #fourth {
   width: 100%;
-  height: 600px;
+  height: 500px;
   perspective: 1px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -176,35 +208,22 @@ textarea, button, img {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-#first h1, #second h1 {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 9vw;
   color: whitesmoke;
-  opacity: 0.5;
 }
-#first h2, #second h2 {
-  padding: 5%;
-}
-#first img, #second img {
+#first img, #second img, #third img, #fourth img {
   opacity: 0.5;
   width: auto;
 }
-#first img:hover, #second img:hover {
+#first img:hover, #second img:hover, #third img:hover, #fourth img:hover {
   opacity: 0.6;
   width: auto;
 }
-#first div, #second div {
+#first div, #second div, #third div, #fourth div {
   position: absolute;
   bottom: 0;
   right: 0;
   color: whitesmoke;
   padding: 1%;
-}
-#first div a, #second div a {
-  text-decoration: none;
-  color: whitesmoke;
 }
 
 .home-page-decription {
@@ -247,15 +266,63 @@ textarea, button, img {
   transform: scale(1.1);
 }
 
-/* Articles $ Workshops */
-.workshop-card, .article-card {
-  max-width: 80%;
-  display: grid;
+.symptom-box, .workshop-box, .article-box, .herb-name-box {
+  display: flex;
+  background-color: lightgray;
+  padding: 2%;
+  margin: 5%;
+  justify-content: space-around;
   align-items: center;
-  grid-template-columns: 50% auto;
-  grid-gap: 5%;
-  margin: 10%;
   border-radius: 7px;
+}
+.symptom-box div, .workshop-box div, .article-box div, .herb-name-box div {
+  max-width: 50%;
+}
+
+.symptom-box p, .workshop-box p, .article-box p {
+  width: 40%;
+}
+
+.symptom-box div, .workshop-box div, .article-box {
+  width: 50%;
+}
+
+/* Articles & Workshops */
+.workshop-background {
+  background: url("../public/images/Clement-landscape-3.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  padding: 15%;
+  justify-content: center;
+}
+
+.article-background {
+  background: url("../public/images/Pixabay.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  padding: 15%;
+  display: grid;
+  justify-content: end;
+}
+
+.workshop-card, .article-card {
+  display: flex;
+  background-color: lightgray;
+  padding: 5%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+  margin: 5%;
+}
+.workshop-card div, .article-card div {
+  max-width: 50%;
+  margin: 2%;
 }
 
 .long-description-article {
@@ -278,27 +345,6 @@ textarea, button, img {
 }
 
 /* HerbsBySymptom */
-.symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
-  display: flex;
-  background-color: lightgray;
-  padding: 5%;
-  margin: 5%;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 7px;
-}
-.symptom-box div, .contact-box div, .workshop-box div, .article-box div, .herb-name-box div {
-  max-width: 30%;
-}
-
-.symptom-box p, .workshop-box p, .article-box p {
-  width: 40%;
-}
-
-.symptom-box div, .workshop-box div, .article-box {
-  width: 50%;
-}
-
 .symptom-card {
   width: 200px;
   display: grid;
@@ -319,28 +365,100 @@ textarea, button, img {
 }
 
 /* Contact */
-.contact-box form {
-  width: 200%;
+.contact-background {
+  background: url("../public/images/Mads-Thomsen.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  background-color: lightgray;
+  padding: 15%;
+  justify-content: center;
 }
-.contact-box p {
-  width: 60%;
+
+.contact-box {
+  border-radius: 7px;
+  display: flex;
+  background-color: lightgray;
+  padding: 5%;
+  justify-content: space-around;
+}
+.contact-box div {
+  width: 50%;
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
-  margin: 2%;
-  text-align: start;
+}
+.contactForm div input, .contactForm textarea, .contactForm span, .contactForm button {
+  width: 300px;
 }
 
-.formRow {
-  display: grid;
-}
-.formRow div {
-  width: 100%;
+.section {
+  box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
 }
 
-/* other */
+.section > * {
+  padding: 1em;
+}
+
+/* animations & other */
+.image-wrapper {
+  width: 400px;
+  height: 250px;
+  position: relative;
+  margin: 30vh auto;
+}
+
+.image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  max-width: 400px;
+}
+
+.image-1 {
+  clip-path: polygon(0 0, 0 32%, 28% 0);
+  transform: translate(-10px, -10px);
+  transition: transform 300ms ease;
+  transform-origin: top;
+}
+.image-wrapper:hover .image-1 {
+  transform: translate(0, 0);
+}
+
+.image-2 {
+  clip-path: polygon(28% 0, 0 32%, 0 100%, 17% 100%, 90% 0);
+  transform: translate(-30px, 5px);
+  transition: transform 300ms ease;
+}
+.image-wrapper:hover .image-2 {
+  transform: translate(0, 0);
+}
+
+.image-3 {
+  clip-path: polygon(100% 0, 100% 65%, 74% 100%, 17% 100%, 90% 0);
+  transform: translate(-15px, -10px);
+  transition: transform 300ms ease;
+}
+.image-wrapper:hover .image-3 {
+  transform: translate(0, 0);
+}
+
+.image-4 {
+  clip-path: polygon(100% 65%, 74% 100%, 100% 100%);
+  transform: translate(-32px, 5px);
+  transition: transform 300ms ease;
+  transform-origin: top;
+}
+.image-wrapper:hover .image-4 {
+  transform: translate(0, 0);
+}
+
 [aria-expanded=false] > .expanded,
 [aria-expanded=true] > .collapsed {
   display: none;
@@ -349,15 +467,7 @@ textarea, button, img {
 @media only screen and (max-width: 700px) {
   .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
     flex-direction: column;
-  }
-  .symptom-box p, .workshop-box p, .article-box p {
-    width: 90%;
-  }
-  .symptom-box img, .workshop-box img, .article-box input {
-    width: 90%;
-  }
-  .center-element p {
-    max-width: 100%;
+    width: 100%;
   }
   .workshop-card, .article-card {
     display: flex;

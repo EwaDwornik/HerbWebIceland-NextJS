@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Language} from "../model";
 import ginkgo from '../public/images/ginkgo-pill.png'
 import {allMedicalUses, deleteSpace} from "../services/utilities";
@@ -32,6 +32,7 @@ function Symptom() {
                     </div>
                     <div>
                         {herbsWithSymptom.map((i) => (
+                            // eslint-disable-next-line react/jsx-key
                                 <Link href={"/herb/" + i.id}>
                                     <a><p>{i.names[Language.english]}</p></a>
                                 </Link>
@@ -44,8 +45,9 @@ function Symptom() {
     })
 
     return (<div>
-            <div className="symptom-box">
-                <div>
+
+            <div className="symptom-box animated bounceInLeft">
+                <div className="animated bounceInRight">
                     <Image src={ginkgo} alt="ginkgo"/>
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -58,8 +60,13 @@ function Symptom() {
                     ullamcorper a lacus vestibulum sed arcu non.
                 </p>
             </div>
+
             <div className="space-around ">
                 {symptomsCard}
+            </div>
+
+            <div className="credits">
+                photo by <Link href="https://www.pexels.com/@matthardy/" target="_blank">MaTT Hardy</Link>
             </div>
         </div>
     )

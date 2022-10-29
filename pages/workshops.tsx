@@ -5,6 +5,7 @@ import {Workshop} from "../model";
 import workshop from "../public/images/workshop.jpg"
 import {workshopsDB} from "../data/workshops";
 import Image from "next/image";
+import Link from "next/link";
 
 //list of all herbal workshops that happen in Iceland.
 
@@ -17,8 +18,8 @@ function Workshops() {
 
 
     return (
-        <div>
-            <div className="workshop-box">
+        <div className="workshop-background">
+            <div className="workshop-box animated bounceInLeft">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut
                     labore et dolore magna aliqua. Lectus vestibulum mattis ullamcorper velit sed ullamcorper.
@@ -34,7 +35,8 @@ function Workshops() {
 
             </div>
 
-            <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorkshop"
+            <button className="btn btn-primary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWorkshop"
                     aria-expanded="false" aria-controls="collapseExample">
                 add workshop
             </button>
@@ -46,10 +48,14 @@ function Workshops() {
             </div>
 
             <div>
-                {workshopsDB.map((workshop) =>
-                    <div className="workshop-card">
-
-                        <Image src={workshop.imageWorkshop} className="img-fluid rounded-start"/>
+                {workshopsDB.map((workshop, key) =>
+                    <div className="workshop-card" key={workshop.title}>
+                        <div className="image-wrapper">
+                            <Image className="image-1" layout='fill' src={workshop.imageWorkshop} alt={workshop.title}/>
+                            <Image className="image-2" layout='fill' src={workshop.imageWorkshop} alt={workshop.title}/>
+                            <Image className="image-3" layout='fill' src={workshop.imageWorkshop} alt={workshop.title}/>
+                            <Image className="image-4" layout='fill' src={workshop.imageWorkshop} alt={workshop.title}/>
+                        </div>
 
                         <div className="workshop-description">
                             <h5 className="card-title">{workshop.title}</h5>
@@ -60,7 +66,12 @@ function Workshops() {
                         </div>
                     </div>
                 )}
+                <div className="credits">
+                    photo is taken by <Link href="https://www.pexels.com/@madsdonald/" target="_blank">Mads
+                    Thomsen</Link>
+                </div>
             </div>
+
         </div>
     )
 }

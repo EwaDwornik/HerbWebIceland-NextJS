@@ -36,7 +36,7 @@ function Home() {
 
     return (<div>
             <div id="first">
-                <h1>YOU MIGHT THINK THAT ICELANDIC FLORA IS POOR...</h1>
+                <p className="animated bounceInLeft">YOU MIGHT THINK THAT ICELANDIC FLORA IS POOR...</p>
             </div>
             <div className="home-page-decription">
                 <h5>...and you might be right</h5>
@@ -50,7 +50,7 @@ function Home() {
                 Enjoy!
             </div>
             <div id="first"></div>
-            <div className="high-div home-page-navigation">
+            <div className="high-div home-page-navigation ">
                 <div><Link href="/#herbs-by-name" scroll={false}>Herbs by name</Link></div>
                 <div><Link href="/symptom">Herbs by symptom</Link></div>
                 <div><Link href="/contact">Contact</Link></div>
@@ -85,7 +85,7 @@ function Home() {
             </div>
 
 
-            <div className="space-around">
+            <div className="space-around ">
                 {results.map((single) =>
                     // eslint-disable-next-line react/jsx-key
                     <Link href={"/herb/" + single.id}>
@@ -104,7 +104,8 @@ function Home() {
             </div>
             <div id="second">
                 <Link href="/#first" scroll={false}><Image src={arrowup}/></Link>
-                <div>all photos are taken by <Link href="https://clementcoudeyre.com" target="_blank">Clément
+                <div className="credits">
+                    photos by <Link href="https://clementcoudeyre.com" target="_blank">Clément
                     Coudeyre</Link></div>
             </div>
 

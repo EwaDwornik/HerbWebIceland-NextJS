@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {artcilesDB} from "../data/articles";
 import Image from "next/image";
+import Link from "next/link";
 
 // Page where you can read articles about herbs.
 function Articles() {
@@ -37,53 +38,44 @@ function Articles() {
     );
 
     return (
-        <div>
-            <div className="article-box">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut
-                    labore et dolore magna aliqua. Lectus vestibulum mattis ullamcorper velit sed ullamcorper.
-                    In
-                    nibh mauris cursus mattis. Amet est placerat in egestas erat. Tristique senectus et netus et
-                    malesuada fames ac. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien.
-                    Pellentesque elit uillamcorper dignissim cras tincidunt lobortis feugiat. At tempor commodo
-                    ullamcorper a lacus vestibulum sed arcu non.</p>
-                <input
+        <div className="article-background ">
+            <div className="article-box animated bounceInLeft">
+                <p>What are you seeking? Check if we have written an article about it!</p>
+                <div><input
                     type="text"
                     className="form-control searching-child searching-articles"
                     placeholder="Search"
                     value={searchTerm}
                     onChange={handleChange}
-                />
+                /></div>
             </div>
             <div>
 
-
-                {results.map((article) =>
-                    <div>
+                {results.map((article, key) =>
+                    <div key={article.id}>
                         <div>
                             <div className="article-card">
-                                <div className="article-img">
-                                    <Image src={article.imageArtilces} className="img-fluid rounded-start"/>
+                                <div className="image-wrapper">
+                                    <Image className="image-1" layout='fill' src={article.imageArtilces} alt={article.title}/>
+                                    <Image className="image-2" layout='fill' src={article.imageArtilces} alt={article.title}/>
+                                    <Image className="image-3" layout='fill' src={article.imageArtilces} alt={article.title}/>
+                                    <Image className="image-4" layout='fill' src={article.imageArtilces} alt={article.title}/>
                                 </div>
                                 <div>
-                                    <div>
-                                        <h5>{article.title}</h5>
-                                        {article.shortDescription} < br/>< br/>
-
-
-                                        <ExpandableText descriptionLength={120}>
-                                            {article.longDescription}
-                                        </ExpandableText>
-
-
-                                    </div>
-
+                                    <h5>{article.title}</h5>
+                                    {article.shortDescription} < br/>< br/>
+                                    <ExpandableText descriptionLength={120}>
+                                        {article.longDescription}
+                                    </ExpandableText>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )
                 }
+            </div>
+            <div className="credits">
+                photo by <Link href="https://www.pexels.com/@pixabay/" target="_blank">Pixabay</Link>
             </div>
         </div>
     );
