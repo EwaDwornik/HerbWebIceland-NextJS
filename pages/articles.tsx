@@ -6,6 +6,7 @@ import Link from "next/link";
 // Page where you can read articles about herbs.
 function Articles() {
     const [searchTerm, setSearchTerm] = useState("");
+
     const handleChange = (event: any) => {
         setSearchTerm(event.target.value);
     };
@@ -41,13 +42,17 @@ function Articles() {
         <div className="article-background ">
             <div className="article-box animated bounceInLeft">
                 <p>What are you seeking? Check if we have written an article about it!</p>
-                <div><input
+                <div className="pos-relative">
+                    <input
                     type="text"
-                    className="form-control searching-child searching-articles"
+                    className="searching-articles effect-green"
                     placeholder="Search"
                     value={searchTerm}
                     onChange={handleChange}
-                /></div>
+                />
+                    <span className="focus-border"></span>
+
+                </div>
             </div>
             <div>
 

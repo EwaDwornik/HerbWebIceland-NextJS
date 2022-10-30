@@ -67,8 +67,6 @@ function Home() {
                         <option value="icelandic">Icelandic</option>
                         <option value="english">English</option>
                     </select>
-                    <span className="focus-border"></span>
-
                 </div>
 
                 <div className="center-element pos-relative">

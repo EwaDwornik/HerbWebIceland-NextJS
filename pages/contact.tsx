@@ -33,13 +33,13 @@ function Contact() {
                     <Form className="contactForm ">
                         <div className="pos-relative">
                             <label htmlFor="Name">name</label>
-                            <Field className="effect-green" name="name" placeholder="Ewok"/>
+                            <Field className="effect-green-longer" name="name" placeholder="Ewok"/>
                             <span className="focus-border"></span>
                         </div>
                         <div className="pos-relative">
                             <label htmlFor="email">e-mail</label>
                             <Field
-                                className="effect-green"
+                                className="effect-green-longergreen"
                                 name="email"
                                 placeholder="ewok@sw.com"
                                 type="email"
@@ -48,12 +48,12 @@ function Contact() {
                         </div>
                         <div className="pos-relative">
                             <label htmlFor="subject">subject</label>
-                            <Field className="effect-green" name="subject" placeholder="subject"/>
+                            <Field className="effect-green-longer" name="subject" placeholder="subject"/>
                             <span className="focus-border"></span>
                         </div>
                         <div className="pos-relative">
                             <label htmlFor="message">message</label>
-                            <Field className="effect-green" component='textarea' row={7} id="message" name="message"
+                            <Field className="effect-green-longer" component='textarea' row={7} id="message" name="message"
                                    placeholder="message"/>
                             <span className="focus-border"></span>
 
