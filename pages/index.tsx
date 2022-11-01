@@ -39,7 +39,7 @@ function Home() {
                 <p className="animated bounceInLeft">YOU MIGHT THINK THAT ICELANDIC FLORA IS POOR...</p>
             </div>
             <div className="home-page-decription">
-                <h5>...and you might be right</h5>
+                <p>...and you might be right</p>
                 But! Between the lava fields and glaciers you can find plenty of medical herbs, at least 85,
                 that can help you to improve your life.<br/>
                 Tough climate made them very potent, few leaves taken from birch won’t harm the tree, but their

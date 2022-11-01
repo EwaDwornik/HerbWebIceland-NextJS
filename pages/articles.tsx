@@ -55,7 +55,6 @@ function Articles() {
                 </div>
             </div>
             <div>
-
                 {results.map((article, key) =>
                     <div key={article.id}>
                         <div>

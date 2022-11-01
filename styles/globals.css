@@ -4,6 +4,10 @@ body {
   background-color: whitesmoke;
   text-align: center;
   color: #466803;
+  font-size: 1vw;
+}
+body h5 {
+  font-size: 1.5vw;
 }
 
 a, Link {
@@ -24,6 +28,8 @@ button {
   border: #0F3325 solid 0.5px;
   transition: background-color 1s linear;
   margin-top: 5%;
+  padding: 2%;
+  border-radius: 7px;
 }
 
 button:hover {
@@ -108,7 +114,7 @@ img {
   color: white;
   text-align: right;
   padding-right: 5%;
-  font-size: 0.7vw;
+  font-size: 1vw;
 }
 .credits a {
   text-decoration: none;
@@ -191,20 +197,22 @@ img {
   align-items: center;
   color: whitesmoke;
 }
-#first img, #second img {
-  opacity: 0.5;
-  width: auto;
-}
-#first img:hover, #second img:hover {
-  opacity: 0.6;
-  width: auto;
-}
 #first div, #second div {
   position: absolute;
   bottom: 0;
   right: 0;
   color: whitesmoke;
   padding: 1%;
+}
+
+#second img {
+  opacity: 0.5;
+  max-height: 40vw;
+  width: auto;
+}
+#second img:hover {
+  opacity: 0.6;
+  width: auto;
 }
 
 .home-page-decription {
@@ -270,6 +278,37 @@ img {
 }
 
 /* Herb */
+.lightBoxShadow {
+  display: flex;
+  padding: 2%;
+  margin: 5%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.lightBoxShadow > div:not(:first-child) {
+  background-color: whitesmoke;
+  padding: 2%;
+  margin: 5%;
+  border-radius: 7px;
+  width: 40%;
+}
+
+.circleBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  max-width: 30%;
+  min-width: 400px;
+  padding: 5%;
+}
+.circleBox img {
+  max-height: 300px;
+}
+
 .herb-background {
   background: url("../public/images/ArtHouse-studio.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -286,6 +325,18 @@ img {
 }
 .herb-name-box div {
   width: 30%;
+}
+
+.vegetation-box {
+  display: flex;
+  padding: 2%;
+  margin: 5%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+}
+.vegetation-box img {
+  max-width: 400px;
 }
 
 /* Articles & Workshops */
@@ -310,6 +361,22 @@ img {
   padding: 15%;
   display: grid;
   justify-content: end;
+}
+
+.workshop-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  text-align: start;
+  background-color: lightgray;
+  padding: 5%;
+  border-radius: 7px;
+  margin: 5%;
+}
+.workshop-form div input, .workshop-form span, .workshop-form button, .workshop-form textarea {
+  width: 25vw;
+  border: none;
+  margin: 1%;
 }
 
 .workshop-card, .article-card {
@@ -385,7 +452,6 @@ img {
 }
 
 .contact-box {
-  border-radius: 7px;
   display: flex;
   background-color: lightgray;
   padding: 5%;
@@ -401,6 +467,7 @@ img {
 }
 .contactForm div input, .contactForm textarea, .contactForm span, .contactForm button {
   width: 300px;
+  border: none;
 }
 
 .section {
@@ -471,14 +538,31 @@ img {
 }
 
 @media only screen and (max-width: 700px) {
-  .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
-    flex-direction: column;
-    width: 100%;
+  body {
+    font-size: 2vw;
   }
-  .workshop-card, .article-card {
+  body h5, body h3 {
+    font-size: 2.5vw;
+  }
+  .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box, .lightBoxShadow, .vegetation-box, .workshop-description, .workshop-card, .article-card, .workshop-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1%;
+  }
+  .symptom-box div, .symptom-box p, .symptom-box img, .contact-box div, .contact-box p, .contact-box img, .workshop-box div, .workshop-box p, .workshop-box img, .article-box div, .article-box p, .article-box img, .herb-name-box div, .herb-name-box p, .herb-name-box img, .lightBoxShadow div, .lightBoxShadow p, .lightBoxShadow img, .vegetation-box div, .vegetation-box p, .vegetation-box img, .workshop-description div, .workshop-description p, .workshop-description img, .workshop-card div, .workshop-card p, .workshop-card img, .article-card div, .article-card p, .article-card img, .workshop-form div, .workshop-form p, .workshop-form img {
+    max-width: 100%;
+    width: 90%;
+    margin: 1%;
+  }
+  .workshop-form div input, .workshop-form span, .workshop-form button, .workshop-form textarea {
+    width: 100%;
+    border: none;
+    margin: 1%;
+  }
+  #first, #second {
+    height: 200px;
   }
   .navigation {
     right: -50%;
@@ -486,6 +570,10 @@ img {
     grid-template-columns: 1fr 2fr;
   }
 }
+.home-page-decription {
+  padding: 3%;
+}
+
 @media print {
   a[href^=http]:after {
     content: " (" attr(href) ")";

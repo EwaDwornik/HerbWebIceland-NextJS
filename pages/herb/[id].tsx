@@ -17,32 +17,39 @@ export default function HerbPage() {
                 <div className="space-around">
                     {values.map((lang: Language, key) => (
                         <div key={herb.id}>{herb.names[lang]}</div>
-                    ))}</div>
-                <div className="herb-background">
+                    ))}
+                </div>
 
-                <div className="herb-name-box">                     <div>
+                <div className="herb-background animated bounceInLeft">
+                    <div className="lightBoxShadow">
+                        <div className="circleBox">
+                            <Image src={herb.imageHerb} alt={herb.names[Language.english]}/>
+                        </div>
+                        <div>
+                            <p><h3>Medical uses:</h3></p>
                             {herb.medicalUses.map((use: string, key) => (
                                 <Link key={deleteSpace(use)}
                                       href={"/symptom?searchedSymptom=" + deleteSpace(use)}
                                       scroll={true}>
-                                    <a><h5>{use}</h5></a>
+                                    <a><p>{use}</p></a>
                                 </Link>)
                             )}
                         </div>
                         <div>
-                            <Image src={herb.imageHerb} alt={herb.names[Language.english]}/>
-                        </div>
-                        <div>
+                            <p><h3>Precautions:</h3></p>
+
                             {herb.precautions.map((precaution: string, key) => (
-                                <h5 key={herb.id}>{precaution}</h5>)
+                                <p key={herb.id}>{precaution}</p>)
                             )}
                         </div>
                     </div>
-
-                    <div className="herb-name-box">
-                        <div>{herb.vegetation}</div>
-                        <img className="vegetation-img" src={herb.vegetationPhoto} alt={herb.names.english}/>
-                    </div>
+                </div>
+                <div className="vegetation-box">
+                    <div>{herb.vegetation}</div>
+                    <img className="vegetation-img" src={herb.vegetationPhoto} alt={herb.names.english}/>
+                </div>
+                <div className="credits">
+                    photo is taken by <Link href="https://www.pexels.com/@arthousestudio/" target="_blank">ArtHouse Studio</Link>
                 </div>
             </div>
         )

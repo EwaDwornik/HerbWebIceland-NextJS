@@ -31,12 +31,15 @@ $theme: #2e3738;
 
 /* overall changes */
 
-
 body {
   font-family: 'Comfortaa', cursive;
   background-color: $maincolor;
   text-align: center;
   color: $dark-green;
+  font-size: 1vw;
+  h5 {
+    font-size: 1.5vw;
+  }
 }
 
 a, Link {
@@ -57,13 +60,14 @@ button {
   border: $super-dark-green solid 0.5px;
   transition: background-color 1s linear;
   margin-top: 5%;
+  padding: 2%;
+  border-radius: 7px;
 }
 
 button:hover {
   color: $maincolor;
   background-color: $dark-green;
 }
-
 
 :focus {
   outline: none;
@@ -142,7 +146,7 @@ img {
   color: white;
   text-align: right;
   padding-right: 5%;
-  font-size: 0.7vw;
+  font-size: 1vw;
   a {
     text-decoration: none;
     color: $maincolor;
@@ -208,7 +212,6 @@ img {
 }
 
 
-
 #first, #second {
   width: 100%;
   height: 500px;
@@ -221,16 +224,6 @@ img {
   align-items: center;
   color: $maincolor;
 
-  img {
-    opacity: 0.5;
-    width: auto;
-  }
-
-  img:hover {
-    opacity: 0.6;
-    width: auto;
-  }
-
   div {
     position: absolute;
     bottom: 0;
@@ -241,9 +234,19 @@ img {
 
 }
 
+#second {
+  img {
+    opacity: 0.5;
+    max-height: 40vw;
+    width: auto;
+  }
+  img:hover {
+    opacity: 0.6;
+    width: auto;
+  }
+}
 .home-page-decription {
   padding: 10%;
-
 }
 
 .home-page-navigation {
@@ -298,6 +301,7 @@ img {
     margin: 2%;
   }
 }
+
  .workshop-box p, .article-box p {
   width: 40%
 }
@@ -307,6 +311,38 @@ img {
 }
 
 /* Herb */
+
+.lightBoxShadow {
+  display: flex;
+  padding: 2%;
+  margin: 5%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.lightBoxShadow >  div:not(:first-child){
+  background-color: $maincolor;
+  padding: 2%;
+  margin: 5%;
+  border-radius: 7px;
+  width: 40%
+}
+
+.circleBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  background-color: $maincolor;
+  max-width: 30%;
+  min-width: 400px;
+  padding: 5%;
+  img {
+    max-height: 300px;
+  }
+}
+
 
 .herb-background {
   @include parallax-background("../public/images/ArtHouse-studio.jpg");
@@ -321,6 +357,18 @@ img {
   }
   div {
     width: 30%;
+  }
+}
+
+.vegetation-box {
+  display: flex;
+  padding: 2%;
+  margin: 5%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+  img {
+    max-width: 400px;
   }
 }
 
@@ -341,7 +389,22 @@ img {
   justify-content: end;
 }
 
+.workshop-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  text-align: start;
+  background-color: $shadow-color;
+  padding: 5%;
+  border-radius: 7px;
+  margin: 5%;
+  div input, span, button, textarea {
+    width: 25vw;
+    border: none;
+    margin: 1%;
+  }
 
+}
 
 .workshop-card, .article-card {
   display: flex;
@@ -416,7 +479,6 @@ img {
 
 
 .contact-box {
-  border-radius: 7px;
   display: flex;
   background-color: lightgray;
   padding: 5%;
@@ -432,6 +494,7 @@ img {
 
   div input, textarea, span, button {
     width: 300px;
+    border: none;
   }
 
 }
@@ -509,17 +572,37 @@ img {
 
 @media only screen and (max-width: 700px) {
 
-  .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box {
+  body {
+    font-size: 2vw;
+    h5, h3 {
+      font-size: 2.5vw;
+    }
+     }
+
+  .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box, .lightBoxShadow, .vegetation-box, .workshop-description, .workshop-card, .article-card, .workshop-form {
+display: flex;
     flex-direction: column;
-    width: 100%
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1%;
+    div, p, img {
+      max-width: 100%;
+      width: 90%;
+      margin: 1%;
+    }
+      }
+  .workshop-form {
+    div input, span, button, textarea {
+      width: 100%;
+      border: none;
+      margin: 1%;
+    }
   }
 
+  #first, #second {
+    height: 200px;
+    }
 
-  .workshop-card, .article-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   .navigation {
     right: -50%;
     width: 55%;
@@ -527,6 +610,9 @@ img {
   }
 }
 
+.home-page-decription {
+  padding: 3%;
+}
 @media print {
   a[href^="http"]:after {
     content: " (" attr(href) ")";

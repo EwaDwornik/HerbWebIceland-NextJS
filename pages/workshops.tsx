@@ -35,16 +35,16 @@ function Workshops() {
 
             </div>
 
-            <button className="btn btn-primary" type="button" data-bs-toggle="collapse"
+            <button  type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseWorkshop"
                     aria-expanded="false" aria-controls="collapseExample">
                 add workshop
             </button>
 
             <div className="collapse" id="collapseWorkshop">
-                <div className="card form-workshop card-body">
+
                     <WorkshopForm addWorkshop={addWorkshop}/>
-                </div>
+
             </div>
 
             <div>
