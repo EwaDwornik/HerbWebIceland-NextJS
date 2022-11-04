@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
-import {generateIdWorkshop} from "../services/utilities";
-import {workshopsDB} from "../data/workshops";
-import {Formik, Form} from "formik";
+import React from 'react';
+import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 
 
 
 const initialState={
-    id: -1,
         title: '',
         date: '',
         imageWorkshop: '',
@@ -30,33 +27,23 @@ const WorkshopSchema = Yup.object().shape({
 
 
 export function WorkshopForm({addWorkshop}: any) {
-    const [formState, setFormState] = useState(initialState);
 
-
-    const handleChange = (event: any) => {
-        event.preventDefault();
-        workshopsDB.push({...formState, id: generateIdWorkshop()});
-        // Form to add a workshop. It is sorted by a date.
-        workshopsDB.sort((a, b) => (b.date > a.date) ? 1 : -1)
-        addWorkshop(formState);
-        setFormState(initialState);
-    };
 
 
     return (
         <div className="center-element ">
             <Formik
-                initialValues ={{
-                    id: -1,
-                    title: '',
-                    date: '',
-                    imageWorkshop: '',
-                    email: '',
-                    description: '',
-                    event: ''
-                }}
+                initialValues ={initialState}
                 validationSchema={WorkshopSchema}
-                onSubmit={handleChange}
+                onSubmit={(
+                    values: any,
+                    {setSubmitting}
+                ) => {
+                    setTimeout(() => {
+                        alert(JSON.stringify(values, null, 2));
+                        setSubmitting(false);
+                    }, 500);
+                }}
             >
 
                 {({errors, touched}) => (
@@ -64,29 +51,15 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Title:</label>
-                                <input
-                                    className="effect-green"
-                                    type='text'
-                                    required
-                                    value={formState.title}
-                                    onChange={e => {
-                                        setFormState({...formState, title: e.target.value});
-                                    }}/>
+                                <Field className="effect-green-longer" name="title" placeholder="Ewok"/>
                                 <span className="focus-border"></span>
                                 {errors.title ? (
-                                    <div>{errors.title}</div>
+                                    <div>{(errors.title) as string}</div>
                                 ) : null}
                             </div>
                             <div className="pos-relative">
                                 <label>Date:</label>
-                                <input
-                                    className="effect-green"
-                                    type='date'
-                                    required
-                                    value={formState.date}
-                                    onChange={e => {
-                                        setFormState({...formState, date: e.target.value});
-                                    }}/>
+                                <Field className="effect-green-longer" name="date" type={"date"} placeholder="Ewok"/>
                                 <span className="focus-border"></span>
                                 {errors.date ? (
                                     <div>{errors.date}</div>
@@ -96,42 +69,18 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Photo URL:</label>
-                                <input
-                                    className="effect-green"
-                                    type='text'
-                                    placeholder="http://"
-                                    required
-                                    value={formState.imageWorkshop}
-                                    onChange={e => {
-                                        setFormState({...formState, imageWorkshop: e.target.value});
-                                    }}/>
-                                <span className="focus-border"></span>
+                                <Field className="effect-green-longer" name="imageWorkshop" type={"imageWorkshop"} placeholder="Ewok"/>
                             </div>
                             <div className="pos-relative">
                                 <label>Email:</label>
-                                <input
-                                    className="effect-green"
-                                    type='text'
-                                    required
-                                    value={formState.email}
-                                    onChange={e => {
-                                        setFormState({...formState, email: e.target.value});
-                                    }}/>
+                                <Field className="effect-green-longer" name="email" placeholder="Ewok"/>
                                 <span className="focus-border"></span>
                                 {errors.email && touched.email ? <div>{errors.email}</div> : null}
                             </div>
                         </div>
                         <div className="pos-relative">
                             <label>Description:</label>
-                            <textarea
-                                className="effect-green"
-                                rows={5}
-                                maxLength={450}
-                                required
-                                value={formState.description}
-                                onChange={e => {
-                                    setFormState({...formState, description: e.target.value});
-                                }}/>
+                            <Field as="textarea" style={{height:200}} className="effect-green-longer" name="description" type={"description"} placeholder="Ewok"/>
                             <span className="focus-border"></span>
                             {errors.description ? (
                                 <div>{errors.description}</div>
@@ -140,15 +89,7 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Link to the event:</label>
-                                <input
-                                    className="effect-green"
-                                    type='text'
-                                    placeholder="http://"
-                                    required
-                                    value={formState.event}
-                                    onChange={e => {
-                                        setFormState({...formState, event: e.target.value});
-                                    }}/>
+                                <Field className="effect-green-longer"  name="title" placeholder="http://"/>
                                 <span className="focus-border"></span>
                                 {errors.event ? (
                                     <div>{errors.event}</div>
