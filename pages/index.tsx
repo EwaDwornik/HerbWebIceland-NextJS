@@ -1,5 +1,4 @@
 import {Herb, Language} from "../model";
-import {herbsDB} from "../data/herbs";
 import Link from "next/link";
 import Image from "next/image";
 import arrowup from "/public/images/arrow-up.png"
@@ -13,7 +12,7 @@ function sortByLanguage(herbs: Herb[], lang: Language): Herb[] {
     return [...herbs].sort((a: Herb, b: Herb) => (a.names[lang] > b.names[lang]) ? 1 : -1)
 }
 
-function Home() {
+function Home({ herbsDB }: {herbsDB:Herb[]}) {
     const defaultLanguage = Language.english;
     const [herbs, setHerbs] = useState(sortByLanguage(herbsDB, defaultLanguage));
     const [sortedBy, setSortedBy] = useState(defaultLanguage);
@@ -33,6 +32,8 @@ function Home() {
         (herb.names[Language.english]).toLowerCase().includes(searchTerm) ||
         (herb.names[Language.icelandic]).toLowerCase().includes(searchTerm)
     );
+
+
 
     return (<div>
             <div id="first">
@@ -112,5 +113,22 @@ function Home() {
     )
 }
 
-export default Home;
+export const getServerSideProps = async (context: any) => {
+    let herbsDB;
+    const responseHerbsDB = await fetch(process.env.NEXT_PUBLIC_API_URL + "herbs", {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+        },
+    });
 
+    try {
+        herbsDB = await responseHerbsDB.json();
+    } catch (e) {}
+
+    return {
+        props: { herbsDB: herbsDB?.length ? herbsDB : [] },
+    };
+};
+
+export default Home;

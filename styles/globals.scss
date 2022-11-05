@@ -1,32 +1,10 @@
-
-$light-green: #5ca904;
-$dark-green: #466803;
-$super-dark-green: #0F3325;
-$maincolor: whitesmoke;
-$shadow-color: lightgray;
-$box-shadow: 5px 5px 5px 5px lightgray;
-$box-shadow-hover: 10px 5px 5px 5px lightgray;
-
-
-@mixin parallax-background($file) {
-  background: url($file) no-repeat center center fixed;
-  @include background-size(cover);
-}
-
-@mixin background-size($size) {
-  -webkit-background-size: $size;
-  -moz-background-size: $size;
-  -o-background-size: $size;
-  background-size: $size;
-}
-
-
-$parallax-height: 100vh;
-$center-margin: 0px auto;
-
-$parallax-height: 100vh;
-$center-margin: 0px auto;
-$theme: #2e3738;
+@import "styles/variables/variables";
+@import "components/articles";
+@import "components/contact";
+@import "components/home";
+@import "components/navigation";
+@import "components/symptom";
+@import "components/workshop";
 
 
 /* overall changes */
@@ -119,20 +97,6 @@ select {
   transition: 0.4s;
 }
 
-.center-element {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.space-around {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 1%;
-}
 
 img {
   border-radius: 7px;
@@ -157,134 +121,22 @@ img {
   padding: 5px;
 }
 
-/* Navigation */
-.navigation {
-  position: fixed;
-  z-index: 5;
-  right: -12%;
-  width: 15%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 5%;
-  justify-content: space-around;
-  height: 110%;
-  align-items: center;
-  font-size: 110%;
-  background-color: $maincolor;
-  transition: right 0.5s linear;
-  padding: 1%;
-  margin-top: -5%;
-}
 
-.navigation-links {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
+// common formatting
 
-.navigation:hover {
-  right: 0;
-}
-
-.arrow {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border-top: 2px solid #0F3325;
-  border-right: 2px solid #0F3325;
-  transform: rotate(-135deg);
-  margin: 2%;
-}
-
-/* Home */
-
-
-#first {
-  @include parallax-background("../public/images/Clement-landscape-1.jpg");
-  p {
-    font-size: 6vw;
-  }
-}
-
-#second {
-  @include parallax-background("../public/images/Clement-landscape-2.jpg");
-}
-
-
-#first, #second {
-  width: 100%;
-  height: 500px;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transform: translateZ(-1px);
+.center-element {
   display: flex;
   justify-content: center;
-  align-items: center;
-  color: $maincolor;
-
-  div {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: $maincolor;
-    padding: 1%;
-  }
-
-}
-
-#second {
-  img {
-    opacity: 0.5;
-    max-height: 40vw;
-    width: auto;
-  }
-  img:hover {
-    opacity: 0.6;
-    width: auto;
-  }
-}
-.home-page-decription {
-  padding: 10%;
-}
-
-.home-page-navigation {
-  padding: 10%;
-  display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-
-  div {
-    width: 150px;
-    border: $box-shadow;
-    scrollBehavior: smooth;
-  }
-}
-
-#herbs-by-name {
-  padding: 5%;
-}
-
-.herb-card {
-  width: 200px;
-  height: 250px;
-  display: grid;
-  grid-template-rows: 2fr 1fr;
   align-items: center;
-  box-shadow: $box-shadow;
-  margin: 2%;
-  transition: transform 1s ease;
-  border-radius: 7px;
-
-  img {
-    max-height: 120px;
-  }
 }
 
-.herb-card:hover, .symptom-card:hover {
-  box-shadow: $box-shadow-hover;
-  transform: scale(1.1);
+.space-around {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1%;
 }
 
 
@@ -308,203 +160,6 @@ img {
 
 .symptom-box div, .workshop-box div, .article-box {
   width: 50%;
-}
-
-/* Herb */
-
-.lightBoxShadow {
-  display: flex;
-  padding: 2%;
-  margin: 5%;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 7px;
-}
-
-.lightBoxShadow >  div:not(:first-child){
-  background-color: $maincolor;
-  padding: 2%;
-  margin: 5%;
-  border-radius: 7px;
-  width: 40%
-}
-
-.circleBox {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  border-radius: 50%;
-  background-color: $maincolor;
-  max-width: 30%;
-  min-width: 400px;
-  padding: 5%;
-  img {
-    max-height: 300px;
-  }
-}
-
-
-.herb-background {
-  @include parallax-background("../public/images/ArtHouse-studio.jpg");
-  height: 100%;
-  padding: 5%;
-  justify-content: center;
-}
-
-.herb-name-box {
-  img {
-    max-height: 250px;
-  }
-  div {
-    width: 30%;
-  }
-}
-
-.vegetation-box {
-  display: flex;
-  padding: 2%;
-  margin: 5%;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 7px;
-  img {
-    max-width: 400px;
-  }
-}
-
-/* Articles & Workshops */
-
-.workshop-background {
-  @include parallax-background("../public/images/Clement-landscape-3.jpeg");
-  height: 100%;
-  padding: 15%;
-  justify-content: center;
-}
-
-.article-background {
-  @include parallax-background("../public/images/Pixabay.jpg");
-  height: 100%;
-  padding: 15%;
-  display: grid;
-  justify-content: end;
-}
-
-.workshop-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
-  text-align: start;
-  background-color: $shadow-color;
-  padding: 5%;
-  border-radius: 7px;
-  margin: 5%;
-  div input, span, button, textarea {
-    width: 25vw;
-    border: none;
-    margin: 1%;
-  }
-
-}
-
-.workshop-card, .article-card {
-  display: flex;
-  background-color: $shadow-color;
-  padding: 5%;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 7px;
-  margin: 5%;
-  div {
-    max-width: 50%;
-    margin: 2%;
-  }
-
-}
-
-.long-description-article {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background-color: $maincolor;
-}
-
-.add-workshop {
-  margin-top: 10%;
-  display: flex;
-  justify-content: center;
-}
-
-.form-workshop {
-  background-color: $maincolor;
-  border: none;
-}
-
-/* Symptom */
-
-.symptom-box-search {
-  display: grid;
-  justify-items: center;}
-
-.symptom-card {
-  width: 200px;
-  display: grid;
-  align-items: center;
-  box-shadow: $box-shadow;
-  border: 0.5px lightgray solid;
-  padding: 5%;
-  transition: transform 1s ease;
-  border-radius: 7px;
-
-  div:first-child {
-    border-bottom: 1px solid lightgray;
-  }
-}
-
-.activated {
-  box-shadow: $box-shadow-hover;
-  color: hotpink;
-}
-
-/* Contact */
-
-.contact-background {
-  @include parallax-background("../public/images/Mads-Thomsen.jpg");
-  height: 100%;
-  display: flex;
-  background-color: lightgray;
-  padding: 15%;
-  justify-content: center;
-}
-
-
-.contact-box {
-  display: flex;
-  background-color: lightgray;
-  padding: 5%;
-  justify-content: space-around;
-  div {
-    width: 50%;
-  }
-}
-
-.contactForm {
-  display: flex;
-  flex-direction: column;
-
-  div input, textarea, span, button {
-    width: 300px;
-    border: none;
-  }
-
-}
-
-.section {
-  box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
-}
-
-.section > * {
-  padding: 1em;
 }
 
 
@@ -591,28 +246,9 @@ display: flex;
       margin: 1%;
     }
       }
-  .workshop-form {
-    div input, span, button, textarea {
-      width: 100%;
-      border: none;
-      margin: 1%;
-    }
-  }
-
-  #first, #second {
-    height: 200px;
-    }
-
-  .navigation {
-    right: -50%;
-    width: 55%;
-    grid-template-columns: 1fr 2fr;
-  }
 }
 
-.home-page-decription {
-  padding: 3%;
-}
+
 @media print {
   a[href^="http"]:after {
     content: " (" attr(href) ")";
