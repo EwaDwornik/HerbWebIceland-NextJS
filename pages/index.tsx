@@ -90,7 +90,7 @@ function Home({ herbsDB }: {herbsDB:Herb[]}) {
                     <Link href={"/herb/" + single.id}>
                         <div className="herb-card">
                             <div>
-                                <Image src={single.imageHerb}/>
+                                <Image src={single.pathImageHerb} width={`${(Math.round(single.widthToHeightRatio * 10000) / 10000)*100}%`} height={'100%'}/>
                             </div>
                             <div>
                                 <h5>{single.names[sortedBy]} </h5>
@@ -121,6 +121,8 @@ export const getServerSideProps = async (context: any) => {
             "Content-type": "application/json",
         },
     });
+
+
 
     try {
         herbsDB = await responseHerbsDB.json();
