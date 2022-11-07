@@ -1,6 +1,7 @@
 import React from 'react';
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
+import {generateIdWorkshop, workshopsDB} from "../data/workshops";
 
 
 
@@ -29,6 +30,12 @@ const WorkshopSchema = Yup.object().shape({
 export function WorkshopForm({addWorkshop}: any) {
 
 
+    const handleSubmit = (values: any) => {
+        workshopsDB.push({...values, id: generateIdWorkshop()});
+        workshopsDB.sort((a, b) => (b.date > a.date) ? 1 : -1)
+        console.log(workshopsDB)
+    };
+
 
     return (
         <div className="center-element ">
@@ -39,6 +46,7 @@ export function WorkshopForm({addWorkshop}: any) {
                     values: any,
                     {setSubmitting}
                 ) => {
+                    handleSubmit(values)
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
@@ -89,7 +97,7 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Link to the event:</label>
-                                <Field className="effect-green-longer"  name="title" placeholder="http://"/>
+                                <Field className="effect-green-longer"  name="event" placeholder="http://"/>
                                 <span className="focus-border"></span>
                                 {errors.event ? (
                                     <div>{errors.event}</div>
