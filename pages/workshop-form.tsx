@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
+import {generateIdWorkshop, workshopsDB} from "../data/workshops";
 
 
-
-const initialState={
+const initialState = {
     title: '',
     date: '',
     imageWorkshop: '',
@@ -25,15 +25,20 @@ const WorkshopSchema = Yup.object().shape({
 });
 
 
+export function WorkshopForm( {addWorkshop}: any) {
+    const [formState, setFormState] = useState(initialState);
 
-export function WorkshopForm({addWorkshop}: any) {
-
-
-
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+        workshopsDB.push({...formState, id: generateIdWorkshop()});
+        workshopsDB.sort((a, b) => (b.date > a.date) ? 1 : -1)
+        addWorkshop(formState);
+        setFormState(initialState);
+    };
     return (
         <div className="center-element ">
             <Formik
-                initialValues ={initialState}
+                initialValues={initialState}
                 validationSchema={WorkshopSchema}
                 onSubmit={(
                     values: any,
@@ -51,7 +56,8 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Title:</label>
-                                <Field className="effect-green-longer" name="title" placeholder="Ewok"/>
+                                <Field className="effect-green-longer" name="title" placeholder="Ewok"
+                                                                              />
                                 <span className="focus-border"></span>
                                 {errors.title ? (
                                     <div>{(errors.title) as string}</div>
@@ -69,7 +75,8 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Photo URL:</label>
-                                <Field className="effect-green-longer" name="imageWorkshop" type={"imageWorkshop"} placeholder="Ewok"/>
+                                <Field className="effect-green-longer" name="imageWorkshop" type={"imageWorkshop"}
+                                       placeholder="Ewok"/>
                             </div>
                             <div className="pos-relative">
                                 <label>Email:</label>
@@ -80,7 +87,8 @@ export function WorkshopForm({addWorkshop}: any) {
                         </div>
                         <div className="pos-relative">
                             <label>Description:</label>
-                            <Field as="textarea" style={{height:200}} className="effect-green-longer" name="description" type={"description"} placeholder="Ewok"/>
+                            <Field as="textarea" style={{height: 200}} className="effect-green-longer"
+                                   name="description" type={"description"} placeholder="Ewok"/>
                             <span className="focus-border"></span>
                             {errors.description ? (
                                 <div>{errors.description}</div>
@@ -89,7 +97,7 @@ export function WorkshopForm({addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Link to the event:</label>
-                                <Field className="effect-green-longer"  name="title" placeholder="http://"/>
+                                <Field className="effect-green-longer" name="title" placeholder="http://"/>
                                 <span className="focus-border"></span>
                                 {errors.event ? (
                                     <div>{errors.event}</div>
@@ -98,7 +106,7 @@ export function WorkshopForm({addWorkshop}: any) {
 
                             <div>
                                 <label>Add event:</label>
-                                w <button type="submit">Submit</button>
+                                <button type="submit">Submit</button>
                             </div>
                         </div>
 

@@ -1,16 +1,10 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import yarrow from "../public/images/yarrow.png"
-import alchemilla from "../public/images/alchemilla.png"
-import birch from "../public/images/birch.png"
-import garlic from "../public/images/garlic.png"
-import angelica from "../public/images/angelica.png"
 
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     return new Promise(async () => {
         switch (req.method) {
             case "GET":
-                console.log('aa')
                 return res.status(200).json([
                     {
                         names: {
@@ -18,7 +12,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                             latin: "Achillea millefolium",
                             icelandic: 'Vallhumall'
                         },
-                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}images/alchemilla.png`,
+                        pathImageHerb: `${process.env.NEXT_PUBLIC_URL}../public/images/alchemilla.png`,
                         medicalUses: ["fever", "common cold", "hay fever", "stomach discomfort"],
                         sideEffects: ["drowsines", "increased urination", "skin irritation"],
                         precautions: ["pregnancy", "breastfeeding", "allergy to ragweed and related plants"],

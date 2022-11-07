@@ -55,7 +55,7 @@ function Articles() {
                 </div>
             </div>
             <div>
-                {results.map((article, key) =>
+                {results.map((article) =>
                     <div key={article.id}>
                         <div>
                             <div className="article-card">

@@ -1,12 +1,11 @@
 import {useRouter} from 'next/router'
-import {herbsDB} from "../../data/herbs";
-import {Language} from "../../model";
+import {Herb, Language} from "../../model";
 import {deleteSpace} from "../../services/utilities";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function HerbPage() {
+export default function HerbPage({ herbsDB }: {herbsDB:Herb[]}) {
     const router = useRouter();
     const herb = herbsDB.find((h: { id: number }) => h.id === Number(router.query.id));
     const values = Object.values(Language);
@@ -15,7 +14,7 @@ export default function HerbPage() {
         return (
             <div>
                 <div className="space-around">
-                    {values.map((lang: Language, key) => (
+                    {values.map((lang: Language) => (
                         <div key={herb.id}>{herb.names[lang]}</div>
                     ))}
                 </div>
@@ -27,7 +26,7 @@ export default function HerbPage() {
                         </div>
                         <div>
                             <p><h3>Medical uses:</h3></p>
-                            {herb.medicalUses.map((use: string, key) => (
+                            {herb.medicalUses.map((use: string) => (
                                 <Link key={deleteSpace(use)}
                                       href={"/symptom?searchedSymptom=" + deleteSpace(use)}
                                       scroll={true}>
@@ -38,7 +37,7 @@ export default function HerbPage() {
                         <div>
                             <p><h3>Precautions:</h3></p>
 
-                            {herb.precautions.map((precaution: string, key) => (
+                            {herb.precautions.map((precaution: string) => (
                                 <p key={herb.id}>{precaution}</p>)
                             )}
                         </div>

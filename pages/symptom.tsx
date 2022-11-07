@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import {Language} from "../model";
+import {Herb, Language} from "../model";
 import ginkgo from '../public/images/ginkgo-pill.png'
 import {allMedicalUses, deleteSpace} from "../services/utilities";
-import {herbsDB} from "../data/herbs";
 import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link';
 
 // Page where user can see what herbs are good for a certain issue.
-function Symptom() {
+function Symptom({ herbsDB }: {herbsDB:Herb[]}) {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleChange = (event: any) => {
@@ -41,7 +40,7 @@ function Symptom() {
                         <h6>{use}</h6>
                     </div>
                     <div>
-                        {herbsWithSymptom.map((i, key) => (
+                        {herbsWithSymptom.map((i) => (
                                 <Link href={"/herb/" + i.id} key={i.id}>
                                     <a><p>{i.names[Language.english]}</p></a>
                                 </Link>
