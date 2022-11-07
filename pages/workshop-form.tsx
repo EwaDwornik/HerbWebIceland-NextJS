@@ -13,6 +13,16 @@ const initialState={
         description: '',
         event: ''
 }
+
+type typeInitialState = {
+    title: string,
+    date: string,
+    imageWorkshop: string,
+    email: string,
+    description: string,
+    event: string
+}
+
 const WorkshopSchema = Yup.object().shape({
     title: Yup.string()
         .min(2, 'Too short')
@@ -43,7 +53,7 @@ export function WorkshopForm({addWorkshop}: any) {
                 initialValues ={initialState}
                 validationSchema={WorkshopSchema}
                 onSubmit={(
-                    values: any,
+                    values: typeInitialState,
                     {setSubmitting}
                 ) => {
                     handleSubmit(values)
