@@ -12,7 +12,7 @@ function sortByLanguage(herbs: Herb[], lang: Language): Herb[] {
     return [...herbs].sort((a: Herb, b: Herb) => (a.names[lang] > b.names[lang]) ? 1 : -1)
 }
 
-function Home({ herbsDB }: {herbsDB:Herb[]}) {
+function Home({ herbsDB }: {herbsDB: Herb[]}) {
     const defaultLanguage = Language.english;
     const [herbs, setHerbs] = useState(sortByLanguage(herbsDB, defaultLanguage));
     const [sortedBy, setSortedBy] = useState(defaultLanguage);
@@ -90,8 +90,7 @@ function Home({ herbsDB }: {herbsDB:Herb[]}) {
                     <Link href={"/herb/" + single.id}>
                         <div className="herb-card">
                             <div>
-                                <Image src={single.imageHerb}/>
-                            </div>
+                                <Image src={single.pathImageHerb} width={`${(Math.round(single.widthToHeightRatio * 10000) / 10000)*100}%`} height={'100%'}/>                            </div>
                             <div>
                                 <h5>{single.names[sortedBy]} </h5>
                                 <p>{single.names[Language.latin]}</p>

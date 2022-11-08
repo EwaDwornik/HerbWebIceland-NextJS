@@ -1,4 +1,3 @@
-import {herbsDB} from "../data/herbs";
 import {Article, Workshop} from "../model";
 import {workshopsDB} from "../data/workshops";
 import {artcilesDB} from "../data/articles";
@@ -26,13 +25,6 @@ export function generateIdArticle() {
 export function deleteSpace (word: string) {
     return word = word.replaceAll(' ','');
 }
-
-const allMedicalUsesSet = new Set<string>();
-herbsDB.forEach(herb => herb.medicalUses.forEach( use => allMedicalUsesSet.add(use)));
-
-export const allMedicalUses = Array.from(allMedicalUsesSet);
-allMedicalUses.sort();
-
 
 
 export function getAllArticles(): Article[] {

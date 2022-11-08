@@ -1,18 +1,28 @@
 import React, {useState} from 'react';
 import {Herb, Language} from "../model";
 import ginkgo from '../public/images/ginkgo-pill.png'
-import {allMedicalUses, deleteSpace} from "../services/utilities";
+import { deleteSpace} from "../services/utilities";
 import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link';
 
+
 // Page where user can see what herbs are good for a certain issue.
 function Symptom({ herbsDB }: {herbsDB:Herb[]}) {
+
+
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleChange = (event: any) => {
         setSearchTerm(event.target.value);
     };
+
+    const allMedicalUsesSet = new Set<string>();
+    herbsDB.forEach(herb => herb.medicalUses.forEach( use => allMedicalUsesSet.add(use)));
+
+    const allMedicalUses = Array.from(allMedicalUsesSet);
+    allMedicalUses.sort();
+
 
     const results = allMedicalUses.filter(medicalUse =>
         medicalUse.includes(searchTerm))
@@ -91,6 +101,25 @@ function Symptom({ herbsDB }: {herbsDB:Herb[]}) {
         </div>
     )
 }
+
+
+export const getServerSideProps = async (context: any) => {
+    let herbsDB;
+    const responseHerbsDB = await fetch(process.env.NEXT_PUBLIC_API_URL + "herbs", {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+        },
+    });
+
+    try {
+        herbsDB = await responseHerbsDB.json();
+    } catch (e) {}
+
+    return {
+        props: { herbsDB: herbsDB?.length ? herbsDB : [] },
+    };
+};
 
 export default Symptom;
 

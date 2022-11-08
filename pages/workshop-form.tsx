@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 import {generateIdWorkshop, workshopsDB} from "../data/workshops";
@@ -18,22 +18,19 @@ const WorkshopSchema = Yup.object().shape({
         .max(50, 'Too long')
         .required('Required'),
     date: Yup.date().required(),
-    imageWorkshop: Yup.string().required(),
     email: Yup.string().email('Invalid email').required('Required'),
     description: Yup.string().min(20, 'Too short').required('Required'),
     event: Yup.string().required(),
 });
 
 
-export function WorkshopForm( {addWorkshop}: any) {
-    const [formState, setFormState] = useState(initialState);
+export function WorkshopForm({addWorkshop}: any) {
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
-        workshopsDB.push({...formState, id: generateIdWorkshop()});
+    const handleSubmit = (values: any) => {
+        workshopsDB.push({...values, id: generateIdWorkshop()});
         workshopsDB.sort((a, b) => (b.date > a.date) ? 1 : -1)
-        addWorkshop(formState);
-        setFormState(initialState);
+        addWorkshop(values);
+
     };
     return (
         <div className="center-element ">
@@ -44,6 +41,7 @@ export function WorkshopForm( {addWorkshop}: any) {
                     values: any,
                     {setSubmitting}
                 ) => {
+                    handleSubmit(values)
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
@@ -56,8 +54,8 @@ export function WorkshopForm( {addWorkshop}: any) {
                         <div>
                             <div className="pos-relative">
                                 <label>Title:</label>
-                                <Field className="effect-green-longer" name="title" placeholder="Ewok"
-                                                                              />
+                                <Field className="effect-green" name="title" placeholder="Ewok"
+                                       />
                                 <span className="focus-border"></span>
                                 {errors.title ? (
                                     <div>{(errors.title) as string}</div>
@@ -65,42 +63,42 @@ export function WorkshopForm( {addWorkshop}: any) {
                             </div>
                             <div className="pos-relative">
                                 <label>Date:</label>
-                                <Field className="effect-green-longer" name="date" type={"date"} placeholder="Ewok"/>
+                                <Field className="effect-green" name="date" type={"date"} placeholder="Ewok"/>
                                 <span className="focus-border"></span>
                                 {errors.date ? (
-                                    <div>{errors.date}</div>
+                                    <div>{(errors.date) as string}</div>
                                 ) : null}
                             </div>
                         </div>
                         <div>
                             <div className="pos-relative">
                                 <label>Photo URL:</label>
-                                <Field className="effect-green-longer" name="imageWorkshop" type={"imageWorkshop"}
+                                <Field className="effect-green" name="imageWorkshop" type={"imageWorkshop"}
                                        placeholder="Ewok"/>
                             </div>
                             <div className="pos-relative">
                                 <label>Email:</label>
-                                <Field className="effect-green-longer" name="email" placeholder="Ewok"/>
+                                <Field className="effect-green" name="email" placeholder="Ewok"/>
                                 <span className="focus-border"></span>
-                                {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                                {errors.email && touched.email ? <div>{(errors.email) as string}</div> : null}
                             </div>
                         </div>
                         <div className="pos-relative">
                             <label>Description:</label>
-                            <Field as="textarea" style={{height: 200}} className="effect-green-longer"
+                            <Field as="textarea" style={{height: 200}} className="effect-green"
                                    name="description" type={"description"} placeholder="Ewok"/>
                             <span className="focus-border"></span>
                             {errors.description ? (
-                                <div>{errors.description}</div>
+                                <div>{(errors.description) as string}</div>
                             ) : null}
                         </div>
                         <div>
                             <div className="pos-relative">
                                 <label>Link to the event:</label>
-                                <Field className="effect-green-longer" name="title" placeholder="http://"/>
+                                <Field className="effect-green" name="event" placeholder="http://"/>
                                 <span className="focus-border"></span>
                                 {errors.event ? (
-                                    <div>{errors.event}</div>
+                                    <div>{(errors.event) as string}</div>
                                 ) : null}
                             </div>
 

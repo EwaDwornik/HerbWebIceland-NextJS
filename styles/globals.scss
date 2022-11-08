@@ -5,6 +5,7 @@
 @import "components/navigation";
 @import "components/symptom";
 @import "components/workshop";
+@import "components/herb[id]";
 
 
 /* overall changes */
@@ -235,7 +236,7 @@ img {
      }
 
   .symptom-box, .contact-box, .workshop-box, .article-box, .herb-name-box, .lightBoxShadow, .vegetation-box, .workshop-description, .workshop-card, .article-card, .workshop-form {
-display: flex;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;

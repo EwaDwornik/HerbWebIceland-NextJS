@@ -9,8 +9,9 @@ export enum Language {
 export interface Herb {
     id: number,
     names: { [name in Language]: string },
-    imageHerb: string | StaticImageData,
+    pathImageHerb: string | StaticImageData,
     imageVegetation?: string,
+    widthToHeightRatio: number;
     medicalUses: string[],
     sideEffects: string[],
     precautions: string[],

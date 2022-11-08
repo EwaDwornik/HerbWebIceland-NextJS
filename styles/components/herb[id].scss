@@ -1,51 +1,58 @@
-
-.lightBoxShadow {
+#herbID {
+  @include parallax-background("../../public/images/ArtHouse-studio.jpg");
+  width: 100%;
+  height: 500px;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateZ(-1px);
   display: flex;
-  padding: 2%;
-  margin: 5%;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  border-radius: 7px;
+  color: $maincolor;
+
+div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $maincolor;
+  padding: 1%;
+
 }
 
-.lightBoxShadow >  div:not(:first-child){
-  background-color: $maincolor;
-  padding: 2%;
+}
+.herbSymptoms {
+  display: flex;
+  position: relative;
+  padding: 1%;
   margin: 5%;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 7px;
-  width: 40%
+ }
+
+.herbSymptoms >  div:not(:nth-child(2n)) {
+  padding: 2%;
+  border-radius: 7px;
+  width: 30%
 }
 
 .circleBox {
   display: flex;
   justify-content: center;
   align-content: center;
+  position: absolute;
   border-radius: 50%;
   background-color: $maincolor;
-  max-width: 30%;
-  min-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 40vw;
+  height: 40vw;
   padding: 5%;
-  img {
-    max-height: 300px;
-  }
 }
 
-
-.herb-background {
-  @include parallax-background("../../public/images/ArtHouse-studio.jpg");
-  height: 100%;
-  padding: 5%;
-  justify-content: center;
-}
-
-.herb-name-box {
-  img {
-    max-height: 250px;
-  }
-  div {
-    width: 30%;
-  }
-}
 
 .vegetation-box {
   display: flex;
@@ -57,4 +64,31 @@
   img {
     max-width: 400px;
   }
+}
+
+@media only screen and (max-width: 700px) {
+  .herbSymptoms {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1%;
+    font-size: 3vw;
+    h3 {
+      font-size: 4vw;
+    }
+  >  div:not(:nth-child(2n)) {
+    z-index: 5;
+  }
+  }
+  .circleBox {
+    position: static;
+    margin: 1%;
+    z-index: 0;
+    opacity: 30%;
+    height: 5vw;
+    }
 }
